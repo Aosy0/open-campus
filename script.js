@@ -169,5 +169,4 @@
   };
 
   window.addEventListener('resize', adjustNavigationForScreenSize);
-
 })();
