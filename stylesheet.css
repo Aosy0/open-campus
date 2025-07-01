@@ -178,16 +178,19 @@ nav button.active::after {
 
 /* ボトムナビ用のページ下部パディング */
 main {
-  padding-bottom: 80px; /* ボトムナビの高さ分 */
+  padding-bottom: 80px;
+  /* ボトムナビの高さ分 */
 }
 
 /* --- ナビゲーションラベル表示制御 --- */
 .nav-label {
-  display: none; /* 疑似要素を使用するため非表示 */
+  display: none;
+  /* 疑似要素を使用するため非表示 */
 }
 
 /* PC版ナビゲーション */
 @media (min-width: 768px) {
+
   /* ナビゲーションを上部に移動 */
   nav {
     position: static;
@@ -195,7 +198,7 @@ main {
     padding: 1rem 0;
     border-top: none;
   }
-  
+
   /* ページの下部パディングを削除 */
   main {
     padding-bottom: 0;

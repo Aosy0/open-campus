@@ -57,7 +57,7 @@
 
     // モバイルではクリック時のアニメーションを簡略化
     const isMobile = window.innerWidth < 768;
-    
+
     if (!isMobile) {
       // PC版のクリックエフェクト
       targetBtn.classList.add('clicking');
