@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>〇〇大学 オープンキャンパス | 大学の魅力を体験しよう</title>
+  <link rel="stylesheet" href="open-campus-prototype.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+  <header>
+    <h1>〇〇大学 オープンキャンパス</h1>
+    <p>ようこそ！大学の魅力を体験しよう</p>
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="テーマ切り替え">
+      <span class="material-icons">dark_mode</span> ダークモード
+    </button>
+  </header>
+  <nav>
+    <ul>
+      <li><button id="nav-home" class="active" aria-current="page" title="トップ"><span
+            class="material-icons">home</span></button></li>
+      <li><button id="nav-timetable" title="タイムテーブル"><span class="material-icons">schedule</span></button></li>
+      <li><button id="nav-map" title="キャンパスマップ"><span class="material-icons">map</span></button></li>
+      <li><button id="nav-contact" title="お問い合わせ"><span class="material-icons">mail</span></button></li>
+    </ul>
+  </nav>
+  <main>
+    <section id="page-home">
+      <h2>オープンキャンパスへようこそ</h2>
+      <p style="text-align: center;">〇〇大学のオープンキャンパスへご参加いただきありがとうございます。<br>
+        充実したプログラムで大学生活の魅力を体験していただけます。</p>
+
+      <div class="welcome-grid row">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="welcome-card">
+            <h3><span class="material-icons">school</span> 学科説明会</h3>
+            <p>各学科の特色ある教育内容や就職状況について詳しくご紹介します</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="welcome-card">
+            <h3><span class="material-icons">apartment</span> キャンパスツアー</h3>
+            <p>最新の設備を誇るキャンパスを在校生がご案内いたします</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="welcome-card">
+            <h3><span class="material-icons">question_answer</span> 個別相談</h3>
+            <p>入試や学生生活について専門スタッフが丁寧にお答えします</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="welcome-card">
+            <h3><span class="material-icons">restaurant</span> 学食体験</h3>
+            <p>人気の学生食堂で実際のメニューをお楽しみください</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="page-timetable" style="display:none;">
+      <h2>タイムテーブル</h2>
+      <table class="timetable">
+        <tr>
+          <th>時間</th>
+          <th>イベント</th>
+          <th>場所</th>
+        </tr>
+        <tr>
+          <td>09:30</td>
+          <td>受付開始</td>
+          <td>正門エントランス</td>
+        </tr>
+        <tr>
+          <td>10:00</td>
+          <td>全体説明会</td>
+          <td>大講堂</td>
+        </tr>
+        <tr>
+          <td>11:00</td>
+          <td>学科別ガイダンス</td>
+          <td>各学科教室</td>
+        </tr>
+        <tr>
+          <td>12:00</td>
+          <td>学食体験・昼食</td>
+          <td>学生食堂</td>
+        </tr>
+        <tr>
+          <td>13:00</td>
+          <td>キャンパスツアー</td>
+          <td>正門集合</td>
+        </tr>
+        <tr>
+          <td>14:00</td>
+          <td>個別相談</td>
+          <td>学生ホール</td>
+        </tr>
+        <tr>
+          <td>15:00</td>
+          <td>模擬授業</td>
+          <td>各教室</td>
+        </tr>
+        <tr>
+          <td>16:00</td>
+          <td>終了・アンケート</td>
+          <td>正門エントランス</td>
+        </tr>
+      </table>
+    </section>
+    <section id="page-map" style="display:none;">
+      <h2>キャンパスマップ</h2>
+      <div class="map-container">
+        <img src="https://placehold.jp/600x350/667eea/ffffff?text=Campus+Map" alt="キャンパスマップ" class="map-img">
+        <p>主要な建物や集合場所をご確認ください。</p>
+      </div>
+
+      <div class="map-features">
+        <div class="map-feature">
+          <h4><span class="material-icons">account_balance</span> 大講堂</h4>
+          <p>全体説明会の会場。最大500名収容可能な最新設備を備えた講堂です。</p>
+        </div>
+        <div class="map-feature">
+          <h4><span class="material-icons">class</span> 各学科教室</h4>
+          <p>学科別ガイダンスや模擬授業を行います。実際の授業環境を体験できます。</p>
+        </div>
+        <div class="map-feature">
+          <h4><span class="material-icons">restaurant</span> 学生食堂</h4>
+          <p>美味しくて栄養バランスの取れた学食メニューをお楽しみください。</p>
+        </div>
+        <div class="map-feature">
+          <h4><span class="material-icons">meeting_room</span> 学生ホール</h4>
+          <p>個別相談会場。進路相談や入試についてお気軽にご質問ください。</p>
+        </div>
+        <div class="map-feature">
+          <h4><span class="material-icons">local_library</span> 図書館</h4>
+          <p>豊富な蔵書と静かな学習環境。最新のデジタル設備も充実しています。</p>
+        </div>
+        <div class="map-feature">
+          <h4><span class="material-icons">science</span> 研究施設</h4>
+          <p>最先端の研究設備を見学できます。実際の研究現場をご覧ください。</p>
+        </div>
+      </div>
+    </section>
+    <section id="page-contact" style="display:none;">
+      <h2>お問い合わせ</h2>
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="name">お名前 *</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">メールアドレス *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">電話番号</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+          <label for="school">在籍校名</label>
+          <input type="text" id="school" name="school">
+        </div>
+        <div class="form-group">
+          <label for="category">お問い合わせ種別</label>
+          <select id="category" name="category">
+            <option value="">選択してください</option>
+            <option value="entrance">入試について</option>
+            <option value="curriculum">カリキュラムについて</option>
+            <option value="campus-life">キャンパスライフについて</option>
+            <option value="support">就職・資格支援について</option>
+            <option value="facilities">施設・設備について</option>
+            <option value="other">その他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">ご質問・ご要望 *</label>
+          <textarea id="message" name="message" rows="5" required placeholder="お気軽にご質問ください"></textarea>
+        </div>
+        <button type="submit">送信</button>
+      </form>
+      <div class="thanks" id="thanks-message" style="display:none;">
+        送信ありがとうございました！<br>
+        お問い合わせ内容を確認後、担当者よりご連絡いたします。
+      </div>
+    </section>
+  </main>
+  <script src="open-campus-prototype.js"></script>
+</body>
+
+</html>
