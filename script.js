@@ -164,8 +164,6 @@
 
   // --- リサイズ時のナビゲーション調整 ---
   const adjustNavigationForScreenSize = () => {
-    // ボトムナビゲーション方式では特別な調整は不要
-    // アクティブ状態は維持される
   };
 
   window.addEventListener('resize', adjustNavigationForScreenSize);
