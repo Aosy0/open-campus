@@ -4,7 +4,7 @@
   // DOM要素の取得
   const themeToggleBtn = document.getElementById('theme-toggle');
   const body = document.body;
-  const navContainer = document.querySelector('nav .nav-row');
+  const navContainer = document.querySelector('nav ul');
   const pages = {
     home: document.getElementById('page-home'),
     timetable: document.getElementById('page-timetable'),
@@ -34,12 +34,39 @@
     }
   });
 
+  // --- ページ切り替えアニメーション ---
+  const showPageWithAnimation = (page) => {
+    page.style.opacity = '0';
+    page.style.transform = 'translateY(20px)';
+    page.style.display = '';
+
+    // 次のフレームでアニメーション開始
+    requestAnimationFrame(() => {
+      page.style.transition = 'opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+      page.style.opacity = '1';
+      page.style.transform = 'translateY(0)';
+    });
+  };
+
   // --- ナビゲーション機能 ---
   const handleNavigation = (e) => {
     const targetBtn = e.target.closest('button');
     if (!targetBtn) return;
 
     const targetPageId = targetBtn.id.replace('nav-', '');
+
+    // モバイルではクリック時のアニメーションを簡略化
+    const isMobile = window.innerWidth < 768;
+    
+    if (!isMobile) {
+      // PC版のクリックエフェクト
+      targetBtn.classList.add('clicking');
+      targetBtn.style.transform = 'translateY(1px) scale(0.98)';
+      setTimeout(() => {
+        targetBtn.style.transform = '';
+        targetBtn.classList.remove('clicking');
+      }, 150);
+    }
 
     // 全てのボタンとページを非アクティブ化
     navContainer.querySelectorAll('button').forEach(btn => {
@@ -48,24 +75,17 @@
       btn.blur(); // フォーカスを外す
     });
 
-    // 全ての.nav-colから.active-colクラスを削除
-    navContainer.querySelectorAll('.nav-col').forEach(col => {
-      col.classList.remove('active-col');
-    });
-
     Object.values(pages).forEach(page => page.style.display = 'none');
 
-    // 対象のボタンとページをアクティブ化
-    targetBtn.classList.add('active');
-    targetBtn.setAttribute('aria-current', 'page');
+    // 少し遅延してからアクティブ化（アニメーション効果のため）
+    const delay = isMobile ? 50 : 100;
+    setTimeout(() => {
+      // 対象のボタンとページをアクティブ化
+      targetBtn.classList.add('active');
+      targetBtn.setAttribute('aria-current', 'page');
 
-    // アクティブボタンの親.nav-colに.active-colクラスを追加
-    const activeCol = targetBtn.closest('.nav-col');
-    if (activeCol) {
-      activeCol.classList.add('active-col');
-    }
-
-    pages[targetPageId].style.display = '';
+      showPageWithAnimation(pages[targetPageId]);
+    }, delay);
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -115,14 +135,8 @@
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
 
-    // 初期状態でアクティブボタンの親コラムに.active-colクラスを追加
-    const initialActiveBtn = navContainer.querySelector('.nav-btn.active');
-    if (initialActiveBtn) {
-      const activeCol = initialActiveBtn.closest('.nav-col');
-      if (activeCol) {
-        activeCol.classList.add('active-col');
-      }
-    }
+    // 初期状態でのナビゲーション調整
+    adjustNavigationForScreenSize();
 
     // ページロード時のアニメーション
     const main = document.querySelector('main');
@@ -147,5 +161,13 @@
 
     elements.forEach(el => observer.observe(el));
   });
+
+  // --- リサイズ時のナビゲーション調整 ---
+  const adjustNavigationForScreenSize = () => {
+    // ボトムナビゲーション方式では特別な調整は不要
+    // アクティブ状態は維持される
+  };
+
+  window.addEventListener('resize', adjustNavigationForScreenSize);
 
 })();

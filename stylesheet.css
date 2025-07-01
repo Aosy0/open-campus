@@ -18,6 +18,14 @@
   --school-bg-light: #f8fafc;
   --school-bg-main: #fff;
   --school-text-muted: #64748b;
+
+  --nav-btn-bg: rgba(255, 255, 255, 0.9);
+  --nav-btn-text: #2d3e50;
+  --nav-btn-text: #2d3e50;
+  --nav-btn-active-bg: #2d3e50;
+  --nav-btn-active-bg: #2d3e50;
+  --nav-btn-active-text: #fff;
+  --nav-btn-active-text: #fff;
 }
 
 /* Custom Body Styling */
@@ -27,6 +35,29 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
   transition: background 0.3s ease;
+}
+
+.page-title-responsive {
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.page-title-responsive wbr {
+  display: inline;
+}
+
+/* 広い画面では1行表示 */
+@media (min-width: 768px) {
+  .page-title-responsive {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .page-title-responsive wbr {
+    display: none;
+  }
 }
 
 /* Dark Mode */
@@ -63,186 +94,258 @@ body.dark-mode .form-control {
   box-shadow: 0 2px 10px rgba(30, 58, 138, 0.08);
 }
 
-/* Navigation Custom Styling */
-.nav-custom {
+/* Navigation Custom Styling - モバイルファースト（ボトムナビゲーション） */
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: #fff !important;
-  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.08);
+  box-shadow: 0 -2px 10px rgba(30, 58, 138, 0.15);
+  padding: 0.5rem 0 calc(0.5rem + env(safe-area-inset-bottom));
+  z-index: 1000;
+  border-top: 1px solid rgba(30, 58, 138, 0.1);
 }
 
-.nav-btn {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: none;
-  border-radius: 18px;
-  color: var(--school-blue);
-  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.1);
-  transition: all 0.3s ease;
-  min-height: 50px;
-  width: 100%;
-  position: relative;
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: flex-start;
+  max-width: 100%;
+  height: 60px;
 }
 
-.nav-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
-  background-color: rgba(255, 255, 255, 0.95);
+nav li {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+nav button {
+  background: transparent;
+  border: none;
   color: var(--school-blue);
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  border-radius: 12px;
+  position: relative;
+  width: 100%;
+  max-width: 70px;
 }
 
-.nav-btn.active {
-  background-color: var(--school-blue-light) !important;
-  color: white !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+nav button .material-icons {
+  font-size: 22px;
+  margin-bottom: 2px;
+  transition: transform 0.2s ease;
+}
+
+nav button::after {
+  content: attr(title);
+  font-size: 0.65rem;
+  font-weight: 500;
+  white-space: nowrap;
+  margin-top: 2px;
+  opacity: 0.8;
+  line-height: 1;
+}
+
+nav button:hover {
+  background-color: rgba(30, 58, 138, 0.05);
+}
+
+nav button.active {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--school-blue-light);
+}
+
+nav button.active .material-icons {
+  transform: translateY(-1px);
+}
+
+nav button.active::after {
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* ボトムナビ用のページ下部パディング */
+main {
+  padding-bottom: 80px; /* ボトムナビの高さ分 */
 }
 
 /* --- ナビゲーションラベル表示制御 --- */
 .nav-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  white-space: nowrap;
-  transition: opacity 0.3s ease;
-  opacity: 1;
-  display: inline;
+  display: none; /* 疑似要素を使用するため非表示 */
 }
 
-/* 大画面：ラベル常時表示、左寄せレイアウト */
-@media (min-width: 992px) {
-  .nav-btn {
-    justify-content: flex-start;
-    padding: 0.7rem 1rem;
-    border-radius: 25px;
-    width: auto;
-    min-width: 50px;
+/* PC版ナビゲーション */
+@media (min-width: 768px) {
+  /* ナビゲーションを上部に移動 */
+  nav {
+    position: static;
+    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.08);
+    padding: 1rem 0;
+    border-top: none;
+  }
+  
+  /* ページの下部パディングを削除 */
+  main {
+    padding-bottom: 0;
   }
 
-  .nav-btn:not(.active) {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    padding: 0;
+  nav ul {
     justify-content: center;
+    gap: 0.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    height: auto;
   }
 
-  .nav-btn:not(.active) .nav-label {
-    display: none;
-  }
-
-  .nav-btn.active {
-    padding: 0.7rem 1rem 0.7rem 0.7rem;
-    width: auto;
-    min-width: auto;
-  }
-
-  .nav-btn.active .nav-label {
-    margin-left: 8px;
-    opacity: 1;
-    display: inline;
-  }
-}
-
-/* 中画面：アイコンのみ、中央寄せ、ホバーでラベル表示 */
-@media (max-width: 991px) and (min-width: 768px) {
-  .nav-btn {
-    justify-content: center;
-    padding: 0.6rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
-
-  /* アクティブボタンは横長でラベル表示 */
-  .nav-btn.active {
+  nav li {
+    flex: 0 0 50px;
     justify-content: flex-start;
-    padding: 0.6rem 1rem 0.6rem 0.6rem;
-    width: auto;
-    min-width: auto;
-    border-radius: 25px;
   }
 
-  /* 非アクティブボタンのラベルはデフォルトで非表示 */
-  .nav-btn:not(.active) .nav-label {
-    opacity: 0;
-    display: block;
+  nav button {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.1);
+    border-radius: 25px;
+    flex-direction: row;
+    padding: 0.7rem;
+    width: 50px;
+    max-width: none;
+    min-height: 50px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  nav button .material-icons {
+    font-size: 24px;
+    margin-bottom: 0;
+    margin-right: 0;
+    transition: margin-right 0.3s ease;
+  }
+
+  nav button::after {
     position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--school-blue);
-    color: white;
-    padding: 0.3rem 0.6rem;
-    border-radius: 0.375rem;
-    font-size: 0.75rem;
-    margin-top: 0.5rem;
-    z-index: 1000;
-    transition: opacity 0.3s;
-    margin-left: 0;
+    left: 44px;
+    top: 50%;
+    transform: translateY(-50%) translateX(-10px);
+    opacity: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0;
+    transition: all 0.3s ease 0.1s;
     pointer-events: none;
+    z-index: 1;
   }
 
-  /* 非アクティブボタンのホバー/フォーカス時にツールチップ表示 */
-  .nav-btn:not(.active):hover .nav-label,
-  .nav-btn:not(.active):focus .nav-label {
-    opacity: 1;
-    display: block;
-    transition: opacity 0.3s;
-  }
-
-  /* アクティブボタンのラベルは常に表示（インライン） */
-  .nav-btn.active .nav-label {
-    position: static !important;
-    opacity: 1 !important;
-    display: inline !important;
-    transform: none !important;
-    background: transparent !important;
-    color: inherit !important;
-    padding: 0 !important;
-    margin-top: 0 !important;
-    margin-left: 8px !important;
-    z-index: auto !important;
-    pointer-events: auto !important;
-    font-size: 0.85rem !important;
-  }
-}
-
-/* 小画面：アイコンのみ、中央寄せ */
-@media (max-width: 767px) {
-  .nav-btn {
-    justify-content: center;
-    padding: 0.5rem;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-  }
-
-  /* アクティブボタンは横長でラベル表示 */
-  .nav-btn.active {
+  nav button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+    background-color: rgba(255, 255, 255, 1);
     justify-content: flex-start;
-    padding: 0.5rem 0.8rem 0.5rem 0.5rem;
-    width: auto;
-    min-width: auto;
-    border-radius: 22px;
+    padding-left: 12px;
+    padding-right: 16px;
   }
 
-  .nav-btn.active .nav-label {
-    margin-left: 6px;
+  nav button:hover .material-icons {
+    margin-right: 8px;
+  }
+
+  nav button:hover::after {
     opacity: 1;
-    display: inline;
+    transform: translateY(-50%) translateX(0);
   }
 
-  .nav-label {
-    display: none !important;
+  /* 各ボタンのホバー時の幅設定 */
+  nav button[title="トップ"]:hover {
+    width: calc(50px + 0.85em * 3 + 32px);
   }
 
-  /* アクティブボタンのラベルだけは表示 */
-  .nav-btn.active .nav-label {
-    display: inline !important;
+  nav button[title="タイムテーブル"]:hover {
+    width: calc(50px + 0.85em * 7 + 32px);
+  }
+
+  nav button[title="キャンパスマップ"]:hover {
+    width: calc(50px + 0.85em * 8 + 32px);
+  }
+
+  nav button[title="お問い合わせ"]:hover {
+    width: calc(50px + 0.85em * 7 + 32px);
+  }
+
+  nav button.active {
+    background-color: var(--school-blue-light) !important;
+    color: white !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    justify-content: flex-start;
+    padding-left: 12px;
+    padding-right: 16px;
+  }
+
+  nav button.active .material-icons {
+    margin-right: 8px;
+  }
+
+  nav button.active::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  /* アクティブボタンの幅設定 */
+  nav button.active[title="トップ"] {
+    width: calc(50px + 0.85em * 3 + 32px);
+  }
+
+  nav button.active[title="タイムテーブル"] {
+    width: calc(50px + 0.85em * 7 + 32px);
+  }
+
+  nav button.active[title="キャンパスマップ"] {
+    width: calc(50px + 0.85em * 8 + 32px);
+  }
+
+  nav button.active[title="お問い合わせ"] {
+    width: calc(50px + 0.85em * 7 + 32px);
   }
 }
 
+/* クリック時のエフェクト（PC版のみ） */
+@media (min-width: 768px) {
+  nav button:active {
+    transform: translateY(0);
+    transition: transform 0.1s ease;
+  }
 
+  nav button:active::after,
+  nav button.clicking::after {
+    opacity: 0 !important;
+    transform: translateY(-50%) translateX(-10px) !important;
+    transition: all 0.1s ease !important;
+  }
+
+  nav button:hover:active::after,
+  nav button:hover.clicking::after {
+    opacity: 0 !important;
+    transform: translateY(-50%) translateX(-10px) !important;
+  }
+}
+
+/* --- ナビゲーションラベル表示制御 --- */
+.nav-label {
+  display: none;
+  /* 疑似要素を使用するため非表示 */
+}
 
 /* Theme Toggle Button */
 .theme-toggle {
@@ -261,12 +364,24 @@ body.dark-mode .form-control {
   color: var(--school-blue);
 }
 
-/* Main Content Styling */
+/* Main Content Styling - モバイルファースト */
 .main-custom {
   background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.06);
+  border-radius: 0;
+  box-shadow: none;
   transition: background 0.3s ease, color 0.3s ease;
+  margin: 0;
+  padding: 1rem;
+}
+
+/* PC版でのmain調整 */
+@media (min-width: 768px) {
+  .main-custom {
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(30, 58, 138, 0.06);
+    margin: 1rem;
+    padding: 2rem;
+  }
 }
 
 /* Card Styling */
@@ -278,6 +393,7 @@ body.dark-mode .form-control {
   border: 1.5px solid var(--school-blue-light);
   transition: transform 0.3s ease, background 0.3s ease;
 }
+
 .card-primary:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(37, 99, 235, 0.13);
@@ -356,6 +472,7 @@ body.dark-mode .form-control {
   color: var(--school-blue);
   position: relative;
 }
+
 .section-title::after {
   content: '';
   display: block;
@@ -396,31 +513,8 @@ body.dark-mode .form-control {
 
 /* Bootstrap Responsive Overrides */
 @media (max-width: 768px) {
-  .nav-btn {
-    width: 40px !important;
-    height: 40px !important;
+  nav button {
     font-size: 0.8rem;
-  }
-
-  /* hover時の幅をメニュー名に応じて設定（小画面でも適用） */
-  #nav-home:hover,
-  #nav-home:focus {
-    width: calc(50px + 3em + 24px) !important;
-  }
-
-  #nav-timetable:hover,
-  #nav-timetable:focus {
-    width: calc(50px + 7em + 24px) !important;
-  }
-
-  #nav-map:hover,
-  #nav-map:focus {
-    width: calc(50px + 8em + 24px) !important;
-  }
-
-  #nav-contact:hover,
-  #nav-contact:focus {
-    width: calc(50px + 7em + 24px) !important;
   }
 
   .card-primary {
@@ -435,31 +529,20 @@ body.dark-mode .form-control {
 }
 
 @media (max-width: 480px) {
-  .nav-btn {
+  nav ul {
+    gap: 0.2rem;
+    max-width: 320px;
+  }
+
+  nav button {
     font-size: 0.8rem;
     width: 40px !important;
     height: 40px !important;
   }
 
-  /* 超小画面でもhover時の幅をメニュー名に応じて設定 */
-  #nav-home:hover,
-  #nav-home:focus {
-    width: calc(50px + 3em + 24px) !important;
-  }
-
-  #nav-timetable:hover,
-  #nav-timetable:focus {
-    width: calc(50px + 7em + 24px) !important;
-  }
-
-  #nav-map:hover,
-  #nav-map:focus {
-    width: calc(50px + 8em + 24px) !important;
-  }
-
-  #nav-contact:hover,
-  #nav-contact:focus {
-    width: calc(50px + 7em + 24px) !important;
+  nav button.active {
+    padding: 0.4rem 0.7rem 0.4rem 0.4rem;
+    border-radius: 20px;
   }
 
   .main-custom {
@@ -479,73 +562,5 @@ body.dark-mode .form-control {
 
   .form-control-custom {
     padding: 0.8rem;
-  }
-}
-
-/* --- 独自ナビゲーションFlexレイアウト --- */
-.nav-row {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 0.5rem;
-  margin: 0 auto;
-  max-width: 500px;
-}
-
-.nav-col {
-  display: flex;
-  min-width: 0;
-  flex: 0 0 50px;
-  transition: flex 0.3s ease;
-}
-
-.nav-col.active-col {
-  flex: 0 1 auto;
-}
-
-.nav-btn {
-  width: 100%;
-  min-width: 0;
-  /* 既存のスタイルはそのまま */
-}
-
-@media (max-width: 991px) {
-  .nav-row {
-    max-width: 400px;
-    gap: 0.3rem;
-  }
-
-  .nav-col {
-    flex: 0 0 50px;
-  }
-
-  .nav-col.active-col {
-    flex: 0 1 auto;
-  }
-
-  .nav-btn {
-    font-size: 0.95rem;
-    padding: 0.6rem 0.3rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .nav-row {
-    flex-direction: row;
-    gap: 0.25rem;
-    max-width: 350px;
-  }
-
-  .nav-col {
-    flex: 0 0 45px;
-  }
-
-  .nav-col.active-col {
-    flex: 0 1 auto;
-  }
-
-  .nav-btn {
-    font-size: 0.9rem;
-    padding: 0.5rem 0.2rem;
   }
 }

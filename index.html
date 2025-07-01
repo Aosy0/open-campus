@@ -16,42 +16,24 @@
 <body>
   <header class="header-custom text-center py-4">
     <div class="container">
-      <h1 class="display-4 fw-bold mb-2">〇〇大学 オープンキャンパス</h1>
+      <h1 class="display-4 fw-bold mb-2 page-title-responsive">〇〇大学<wbr> オープンキャンパス</h1>
       <p class="lead mb-3">ようこそ！大学の魅力を体験しよう</p>
       <button id="theme-toggle" class="btn theme-toggle" aria-label="テーマ切り替え">
         <span class="material-icons me-2">dark_mode</span> ダークモード
       </button>
     </div>
   </header>
-  <nav class="nav-custom py-3">
-    <div class="container">
-      <div class="nav-row">
-        <div class="nav-col">
-          <button id="nav-home" class="btn nav-btn active" aria-current="page" title="トップ">
-            <span class="material-icons">home</span>
-            <span class="nav-label">トップ</span>
-          </button>
-        </div>
-        <div class="nav-col">
-          <button id="nav-timetable" class="btn nav-btn" title="タイムテーブル">
-            <span class="material-icons">schedule</span>
-            <span class="nav-label">タイムテーブル</span>
-          </button>
-        </div>
-        <div class="nav-col">
-          <button id="nav-map" class="btn nav-btn" title="キャンパスマップ">
-            <span class="material-icons">map</span>
-            <span class="nav-label">キャンパスマップ</span>
-          </button>
-        </div>
-        <div class="nav-col">
-          <button id="nav-contact" class="btn nav-btn" title="お問い合わせ">
-            <span class="material-icons">mail</span>
-            <span class="nav-label">お問い合わせ</span>
-          </button>
-        </div>
-      </div>
-    </div>
+  <nav>
+    <ul>
+      <li><button id="nav-home" class="active" aria-current="page" title="トップ"><span
+            class="material-icons">home</span><span class="nav-label">トップ</span></button></li>
+      <li><button id="nav-timetable" title="タイムテーブル"><span class="material-icons">schedule</span><span
+            class="nav-label">タイムテーブル</span></button></li>
+      <li><button id="nav-map" title="キャンパスマップ"><span class="material-icons">map</span><span
+            class="nav-label">キャンパスマップ</span></button></li>
+      <li><button id="nav-contact" title="お問い合わせ"><span class="material-icons">mail</span><span
+            class="nav-label">お問い合わせ</span></button></li>
+    </ul>
   </nav>
   <main class="container my-4">
     <div class="main-custom p-4">
