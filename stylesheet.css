@@ -1,0 +1,560 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-grad: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --header-bg: rgba(45, 62, 80, 0.95);
+  --header-text: #fff;
+  --main-bg: rgba(255, 255, 255, 0.95);
+  --text-color: #2d3e50;
+  --text-light: #ecf0f1;
+  --accent-grad: linear-gradient(45deg, #667eea, #764ba2);
+  --accent-color: #667eea;
+  --nav-btn-bg: rgba(255, 255, 255, 0.9);
+  --nav-btn-text: #2d3e50;
+  --nav-btn-active-bg: #2d3e50;
+  --nav-btn-active-text: #fff;
+  --card-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --card-text: white;
+  --table-header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --table-header-text: white;
+  --table-cell-bg: white;
+  --table-cell-hover-bg: #f8f9ff;
+  --table-border: #eee;
+  --feature-bg: #f8f9ff;
+  --feature-border: #667eea;
+  --feature-text-light: #666;
+  --input-border: #e1e8ed;
+  --input-focus-border: #667eea;
+  --input-bg: white;
+  --thanks-bg: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  --thanks-border: #28a745;
+}
+
+body.dark-mode {
+  --bg-grad: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  --main-bg: rgba(52, 73, 94, 0.95);
+  --text-color: #ecf0f1;
+  --card-bg: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+  --table-cell-bg: rgba(52, 73, 94, 0.8);
+  --table-cell-hover-bg: rgba(70, 90, 120, 0.8);
+  --feature-bg: rgba(52, 73, 94, 0.6);
+  --feature-border: #667eea;
+  --input-bg: rgba(52, 73, 94, 0.8);
+  --input-border: #4a5f7a;
+  --thanks-bg: linear-gradient(135deg, #2d5a3d 0%, #1e3a2b 100%);
+  --thanks-border: #27ae60;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background: var(--bg-grad);
+  color: var(--text-color);
+  min-height: 100vh;
+  line-height: 1.6;
+  transition: background 0.3s ease;
+}
+
+header {
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 2rem 1rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+  margin: 0;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  opacity: 0.9;
+}
+
+.theme-toggle-btn {
+  background: var(--nav-btn-bg);
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1.2rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--nav-btn-text);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  flex-wrap: wrap;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav button {
+  background: var(--nav-btn-bg);
+  border: none;
+  border-radius: 25px;
+  padding: 0.7rem;
+  cursor: pointer;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  color: var(--nav-btn-text);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 12px;
+}
+
+nav button:hover {
+  width: calc(50px + 0.9em * var(--text-length, 6) + 24px);
+  padding: 0.7rem 1.2rem 0.7rem 12px;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  justify-content: flex-start;
+}
+
+/* 各ボタンごとの文字数に基づく幅設定 */
+nav button[title="トップ"]:hover {
+  width: calc(50px + 0.9em * 3 + 24px);
+  /* 3文字 */
+}
+
+nav button[title="タイムテーブル"]:hover {
+  width: calc(50px + 0.9em * 7 + 24px);
+  /* 7文字 */
+}
+
+nav button[title="キャンパスマップ"]:hover {
+  width: calc(50px + 0.9em * 8 + 24px);
+  /* 8文字 */
+}
+
+nav button[title="お問い合わせ"]:hover {
+  width: calc(50px + 0.9em * 7 + 24px);
+  /* 7文字 */
+}
+
+nav button .material-icons {
+  min-width: 24px;
+  margin-right: 8px;
+}
+
+nav button::after {
+  content: attr(title);
+  position: absolute;
+  left: 44px;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+nav button:hover::after {
+  opacity: 1;
+}
+
+/* 大きな画面では常に説明を表示 */
+@media (min-width: 800px) {
+  nav button {
+    padding: 0.7rem 1.2rem 0.7rem 12px;
+    justify-content: flex-start;
+  }
+
+  nav button[title="トップ"] {
+    width: calc(50px + 0.9em * 3 + 24px);
+    /* 3文字 */
+  }
+
+  nav button[title="タイムテーブル"] {
+    width: calc(50px + 0.9em * 7 + 24px);
+    /* 7文字 */
+  }
+
+  nav button[title="キャンパスマップ"] {
+    width: calc(50px + 0.9em * 8 + 24px);
+    /* 8文字 */
+  }
+
+  nav button[title="お問い合わせ"] {
+    width: calc(50px + 0.9em * 7 + 24px);
+    /* 7文字 */
+  }
+
+  nav button::after {
+    opacity: 1;
+  }
+
+  nav button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+nav button.active {
+  background: var(--nav-btn-active-bg);
+  color: var(--nav-btn-active-text);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(45, 62, 80, 0.4);
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: var(--main-bg);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  min-height: 400px;
+  backdrop-filter: blur(10px);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+section {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  color: var(--text-color);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-grad);
+  margin: 0.5rem auto;
+  border-radius: 2px;
+}
+
+.welcome-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.welcome-card {
+  background: var(--card-bg);
+  color: var(--card-text);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.welcome-card:hover {
+  transform: translateY(-5px);
+}
+
+.welcome-card h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+}
+
+.welcome-card p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.timetable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.timetable th {
+  background: var(--table-header-bg);
+  color: var(--table-header-text);
+  font-weight: 600;
+  padding: 1rem;
+  text-align: center;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.timetable td {
+  background: var(--table-cell-bg);
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--table-border);
+  transition: background-color 0.3s ease;
+  font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+  color: var(--text-color);
+}
+
+.timetable tr:hover td {
+  background: var(--table-cell-hover-bg);
+}
+
+.timetable tr:last-child td {
+  border-bottom: none;
+}
+
+.map-container {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.map-img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.map-img:hover {
+  transform: scale(1.02);
+}
+
+.map-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.map-feature {
+  background: var(--feature-bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  border-left: 4px solid var(--feature-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.map-feature h4 {
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.map-feature p {
+  margin: 0;
+  color: var(--feature-text-light);
+  font-size: 0.9rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+input,
+textarea,
+select {
+  padding: 1rem;
+  border: 2px solid var(--input-border);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: var(--input-bg);
+  color: var(--text-color);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+button[type="submit"] {
+  background: var(--accent-grad);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.thanks {
+  color: var(--text-color);
+  font-weight: bold;
+  margin-top: 2rem;
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--thanks-bg);
+  border-radius: 10px;
+  border-left: 4px solid var(--thanks-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  nav ul {
+    padding: 0.5rem;
+  }
+
+  nav button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  main {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .welcome-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .welcome-card {
+    padding: 1.5rem;
+  }
+
+  .map-features {
+    grid-template-columns: 1fr;
+  }
+
+  .timetable th,
+  .timetable td {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 1.5rem 0.5rem;
+  }
+
+  nav ul {
+    gap: 0.25rem;
+    padding: 0.5rem;
+  }
+
+  nav button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 20px;
+  }
+
+  main {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+
+  .welcome-card {
+    padding: 1rem;
+  }
+
+  .timetable th,
+  .timetable td {
+    padding: 0.3rem;
+    font-size: 0.75rem;
+  }
+
+  form {
+    gap: 1rem;
+  }
+
+  input,
+  textarea,
+  select {
+    padding: 0.8rem;
+  }
+}
