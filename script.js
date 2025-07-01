@@ -4,7 +4,7 @@
   // DOM要素の取得
   const themeToggleBtn = document.getElementById('theme-toggle');
   const body = document.body;
-  const navContainer = document.querySelector('nav ul');
+  const navContainer = document.querySelector('nav .nav-row');
   const pages = {
     home: document.getElementById('page-home'),
     timetable: document.getElementById('page-timetable'),
@@ -45,18 +45,42 @@
     navContainer.querySelectorAll('button').forEach(btn => {
       btn.classList.remove('active');
       btn.removeAttribute('aria-current');
+      btn.blur(); // フォーカスを外す
     });
+
+    // 全ての.nav-colから.active-colクラスを削除
+    navContainer.querySelectorAll('.nav-col').forEach(col => {
+      col.classList.remove('active-col');
+    });
+
     Object.values(pages).forEach(page => page.style.display = 'none');
 
     // 対象のボタンとページをアクティブ化
     targetBtn.classList.add('active');
     targetBtn.setAttribute('aria-current', 'page');
+
+    // アクティブボタンの親.nav-colに.active-colクラスを追加
+    const activeCol = targetBtn.closest('.nav-col');
+    if (activeCol) {
+      activeCol.classList.add('active-col');
+    }
+
     pages[targetPageId].style.display = '';
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   navContainer.addEventListener('click', handleNavigation);
+
+  // ナビゲーション外のクリックでフォーカスを管理
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+      // ナビゲーション外をクリックした場合、全てのナビボタンからフォーカスを外す
+      navContainer.querySelectorAll('button').forEach(btn => {
+        btn.blur();
+      });
+    }
+  });
 
   // --- フォーム送信処理 ---
   contactForm.addEventListener('submit', function (e) {
@@ -90,6 +114,16 @@
   // --- 初期化処理 ---
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
+
+    // 初期状態でアクティブボタンの親コラムに.active-colクラスを追加
+    const initialActiveBtn = navContainer.querySelector('.nav-btn.active');
+    if (initialActiveBtn) {
+      const activeCol = initialActiveBtn.closest('.nav-col');
+      if (activeCol) {
+        activeCol.classList.add('active-col');
+      }
+    }
+
     // ページロード時のアニメーション
     const main = document.querySelector('main');
     main.style.opacity = '0';

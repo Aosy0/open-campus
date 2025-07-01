@@ -1,252 +1,384 @@
-* {
-  box-sizing: border-box;
-}
-
+/* Bootstrap Custom Variables for School Colors */
 :root {
-  --bg-grad: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --header-bg: rgba(45, 62, 80, 0.95);
-  --header-text: #fff;
-  --main-bg: rgba(255, 255, 255, 0.95);
-  --text-color: #2d3e50;
-  --text-light: #ecf0f1;
-  --accent-grad: linear-gradient(45deg, #667eea, #764ba2);
-  --accent-color: #667eea;
-  --nav-btn-bg: rgba(255, 255, 255, 0.9);
-  --nav-btn-text: #2d3e50;
-  --nav-btn-active-bg: #2d3e50;
-  --nav-btn-active-text: #fff;
-  --card-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --card-text: white;
-  --table-header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --table-header-text: white;
-  --table-cell-bg: white;
-  --table-cell-hover-bg: #f8f9ff;
-  --table-border: #eee;
-  --feature-bg: #f8f9ff;
-  --feature-border: #667eea;
-  --feature-text-light: #666;
-  --input-border: #e1e8ed;
-  --input-focus-border: #667eea;
-  --input-bg: white;
-  --thanks-bg: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-  --thanks-border: #28a745;
+  --bs-primary: #1e3a8a;
+  --bs-primary-rgb: 30, 58, 138;
+  --bs-secondary: #2563eb;
+  --bs-secondary-rgb: 37, 99, 235;
+  --bs-success: #16a34a;
+  --bs-info: #3b82f6;
+  --bs-warning: #f59e0b;
+  --bs-danger: #dc2626;
+  --bs-light: #f8fafc;
+  --bs-dark: #1e293b;
+
+  /* School Specific Colors */
+  --school-blue: #1e3a8a;
+  --school-blue-light: #2563eb;
+  --school-blue-dark: #0c1426;
+  --school-bg-light: #f8fafc;
+  --school-bg-main: #fff;
+  --school-text-muted: #64748b;
 }
 
-body.dark-mode {
-  --bg-grad: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  --main-bg: rgba(52, 73, 94, 0.95);
-  --text-color: #ecf0f1;
-  --card-bg: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-  --table-cell-bg: rgba(52, 73, 94, 0.8);
-  --table-cell-hover-bg: rgba(70, 90, 120, 0.8);
-  --feature-bg: rgba(52, 73, 94, 0.6);
-  --feature-border: #667eea;
-  --input-bg: rgba(52, 73, 94, 0.8);
-  --input-border: #4a5f7a;
-  --thanks-bg: linear-gradient(135deg, #2d5a3d 0%, #1e3a2b 100%);
-  --thanks-border: #27ae60;
-}
-
+/* Custom Body Styling */
 body {
+  background: var(--school-bg-main);
+  color: var(--school-blue);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  background: var(--bg-grad);
-  color: var(--text-color);
   min-height: 100vh;
-  line-height: 1.6;
   transition: background 0.3s ease;
 }
 
-header {
-  background: var(--header-bg);
-  color: var(--header-text);
-  padding: 2rem 1rem;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+/* Dark Mode */
+body.dark-mode {
+  background: linear-gradient(135deg, var(--school-blue-dark) 0%, var(--school-blue) 100%);
+  color: #f1f5f9;
 }
 
-header h1 {
-  margin: 0 0 0.5rem 0;
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+body.dark-mode .bg-white {
+  background-color: rgba(30, 58, 138, 0.95) !important;
+  color: #f1f5f9;
 }
 
-header p {
-  margin: 0;
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  opacity: 0.9;
+body.dark-mode .card {
+  background-color: var(--school-blue) !important;
+  color: white;
 }
 
-.theme-toggle-btn {
-  background: var(--nav-btn-bg);
+body.dark-mode .table {
+  background-color: rgba(30, 58, 138, 0.8);
+  color: #f1f5f9;
+}
+
+body.dark-mode .form-control {
+  background-color: rgba(30, 58, 138, 0.8);
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+/* Header Styling */
+.header-custom {
+  background-color: #fff !important;
+  color: var(--school-blue);
+  box-shadow: 0 2px 10px rgba(30, 58, 138, 0.08);
+}
+
+/* Navigation Custom Styling */
+.nav-custom {
+  background-color: #fff !important;
+  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.08);
+}
+
+.nav-btn {
+  background-color: rgba(255, 255, 255, 0.95);
   border: none;
-  border-radius: 20px;
-  padding: 0.5rem 1.2rem;
-  margin-top: 1rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--nav-btn-text);
+  border-radius: 18px;
+  color: var(--school-blue);
+  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.1);
   transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.theme-toggle-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1rem;
-  backdrop-filter: blur(10px);
-  flex-wrap: wrap;
-}
-
-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav button {
-  background: var(--nav-btn-bg);
-  border: none;
-  border-radius: 25px;
-  padding: 0.7rem;
-  cursor: pointer;
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
-  font-weight: 600;
-  transition: all 0.3s ease;
-  color: var(--nav-btn-text);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  min-height: 50px;
+  width: 100%;
   position: relative;
-  overflow: hidden;
-  width: 50px;
-  height: 50px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 12px;
 }
 
-nav button:hover {
-  width: calc(50px + 0.9em * var(--text-length, 6) + 24px);
-  padding: 0.7rem 1.2rem 0.7rem 12px;
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--school-blue);
+}
+
+.nav-btn.active {
+  background-color: var(--school-blue-light) !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* --- ナビゲーションラベル表示制御 --- */
+.nav-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  display: inline;
+}
+
+/* 大画面：ラベル常時表示、左寄せレイアウト */
+@media (min-width: 992px) {
+  .nav-btn {
+    justify-content: flex-start;
+    padding: 0.7rem 1rem;
+    border-radius: 25px;
+    width: auto;
+    min-width: 50px;
+  }
+
+  .nav-btn:not(.active) {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .nav-btn:not(.active) .nav-label {
+    display: none;
+  }
+
+  .nav-btn.active {
+    padding: 0.7rem 1rem 0.7rem 0.7rem;
+    width: auto;
+    min-width: auto;
+  }
+
+  .nav-btn.active .nav-label {
+    margin-left: 8px;
+    opacity: 1;
+    display: inline;
+  }
+}
+
+/* 中画面：アイコンのみ、中央寄せ、ホバーでラベル表示 */
+@media (max-width: 991px) and (min-width: 768px) {
+  .nav-btn {
+    justify-content: center;
+    padding: 0.6rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  /* アクティブボタンは横長でラベル表示 */
+  .nav-btn.active {
+    justify-content: flex-start;
+    padding: 0.6rem 1rem 0.6rem 0.6rem;
+    width: auto;
+    min-width: auto;
+    border-radius: 25px;
+  }
+
+  /* 非アクティブボタンのラベルはデフォルトで非表示 */
+  .nav-btn:not(.active) .nav-label {
+    opacity: 0;
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--school-blue);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    z-index: 1000;
+    transition: opacity 0.3s;
+    margin-left: 0;
+    pointer-events: none;
+  }
+
+  /* 非アクティブボタンのホバー/フォーカス時にツールチップ表示 */
+  .nav-btn:not(.active):hover .nav-label,
+  .nav-btn:not(.active):focus .nav-label {
+    opacity: 1;
+    display: block;
+    transition: opacity 0.3s;
+  }
+
+  /* アクティブボタンのラベルは常に表示（インライン） */
+  .nav-btn.active .nav-label {
+    position: static !important;
+    opacity: 1 !important;
+    display: inline !important;
+    transform: none !important;
+    background: transparent !important;
+    color: inherit !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 8px !important;
+    z-index: auto !important;
+    pointer-events: auto !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+/* 小画面：アイコンのみ、中央寄せ */
+@media (max-width: 767px) {
+  .nav-btn {
+    justify-content: center;
+    padding: 0.5rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+
+  /* アクティブボタンは横長でラベル表示 */
+  .nav-btn.active {
+    justify-content: flex-start;
+    padding: 0.5rem 0.8rem 0.5rem 0.5rem;
+    width: auto;
+    min-width: auto;
+    border-radius: 22px;
+  }
+
+  .nav-btn.active .nav-label {
+    margin-left: 6px;
+    opacity: 1;
+    display: inline;
+  }
+
+  .nav-label {
+    display: none !important;
+  }
+
+  /* アクティブボタンのラベルだけは表示 */
+  .nav-btn.active .nav-label {
+    display: inline !important;
+  }
+}
+
+
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 20px;
+  color: var(--school-blue);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  justify-content: flex-start;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--school-blue);
 }
 
-/* 各ボタンごとの文字数に基づく幅設定 */
-nav button[title="トップ"]:hover {
-  width: calc(50px + 0.9em * 3 + 24px);
-  /* 3文字 */
-}
-
-nav button[title="タイムテーブル"]:hover {
-  width: calc(50px + 0.9em * 7 + 24px);
-  /* 7文字 */
-}
-
-nav button[title="キャンパスマップ"]:hover {
-  width: calc(50px + 0.9em * 8 + 24px);
-  /* 8文字 */
-}
-
-nav button[title="お問い合わせ"]:hover {
-  width: calc(50px + 0.9em * 7 + 24px);
-  /* 7文字 */
-}
-
-nav button .material-icons {
-  min-width: 24px;
-  margin-right: 8px;
-}
-
-nav button::after {
-  content: attr(title);
-  position: absolute;
-  left: 44px;
-  opacity: 0;
-  transition: opacity 0.3s ease 0.1s;
-  white-space: nowrap;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-left: 4px;
-}
-
-nav button:hover::after {
-  opacity: 1;
-}
-
-/* 大きな画面では常に説明を表示 */
-@media (min-width: 800px) {
-  nav button {
-    padding: 0.7rem 1.2rem 0.7rem 12px;
-    justify-content: flex-start;
-  }
-
-  nav button[title="トップ"] {
-    width: calc(50px + 0.9em * 3 + 24px);
-    /* 3文字 */
-  }
-
-  nav button[title="タイムテーブル"] {
-    width: calc(50px + 0.9em * 7 + 24px);
-    /* 7文字 */
-  }
-
-  nav button[title="キャンパスマップ"] {
-    width: calc(50px + 0.9em * 8 + 24px);
-    /* 8文字 */
-  }
-
-  nav button[title="お問い合わせ"] {
-    width: calc(50px + 0.9em * 7 + 24px);
-    /* 7文字 */
-  }
-
-  nav button::after {
-    opacity: 1;
-  }
-
-  nav button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  }
-}
-
-nav button.active {
-  background: var(--nav-btn-active-bg);
-  color: var(--nav-btn-active-text);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(45, 62, 80, 0.4);
-}
-
-main {
-  max-width: 1200px;
-  margin: 2rem auto;
-  background: var(--main-bg);
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  min-height: 400px;
-  backdrop-filter: blur(10px);
-  margin-left: 1rem;
-  margin-right: 1rem;
+/* Main Content Styling */
+.main-custom {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.06);
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-section {
+/* Card Styling */
+.card-primary {
+  background-color: #fff !important;
+  color: var(--school-blue);
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.08);
+  border: 1.5px solid var(--school-blue-light);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.card-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.13);
+}
+
+/* Table Styling */
+.table-custom {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.1);
+}
+
+.table-custom thead th {
+  background-color: var(--school-blue) !important;
+  color: white;
+  border: none;
+}
+
+.table-custom tbody tr:hover {
+  background-color: #eff6ff !important;
+}
+
+/* Feature Cards */
+.feature-card {
+  background-color: var(--school-bg-light);
+  border-left: 4px solid var(--school-blue-light);
+  border-radius: 8px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card h4 {
+  color: var(--school-blue);
+}
+
+.feature-card p {
+  color: var(--school-text-muted);
+}
+
+/* Form Styling */
+.form-control-custom {
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.form-control-custom:focus {
+  border-color: var(--school-blue-light);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Button Styling */
+.btn-primary-custom {
+  background-color: var(--school-blue-light);
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+  background-color: var(--school-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* Thanks Message */
+.alert-success-custom {
+  background-color: #dcfce7;
+  border-left: 4px solid #16a34a;
+  border-radius: 8px;
+  color: var(--school-blue);
+}
+
+/* Section Title Styling */
+.section-title {
+  color: var(--school-blue);
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--school-blue-light);
+  margin: 0.5rem auto;
+  border-radius: 2px;
+}
+
+/* Image Styling */
+.img-custom {
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(30, 58, 138, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.img-custom:hover {
+  transform: scale(1.02);
+}
+
+/* Animation */
+.fade-in {
   animation: fadeIn 0.5s ease-in;
 }
 
@@ -262,299 +394,158 @@ section {
   }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-h2 {
-  color: var(--text-color);
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  margin-bottom: 1.5rem;
-  text-align: center;
-  position: relative;
-}
-
-h2::after {
-  content: '';
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: var(--accent-grad);
-  margin: 0.5rem auto;
-  border-radius: 2px;
-}
-
-.welcome-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.welcome-card {
-  background: var(--card-bg);
-  color: var(--card-text);
-  padding: 2rem;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.welcome-card:hover {
-  transform: translateY(-5px);
-}
-
-.welcome-card h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.3rem;
-}
-
-.welcome-card p {
-  margin: 0;
-  opacity: 0.9;
-}
-
-.timetable {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.timetable th {
-  background: var(--table-header-bg);
-  color: var(--table-header-text);
-  font-weight: 600;
-  padding: 1rem;
-  text-align: center;
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
-}
-
-.timetable td {
-  background: var(--table-cell-bg);
-  padding: 1rem;
-  text-align: center;
-  border-bottom: 1px solid var(--table-border);
-  transition: background-color 0.3s ease;
-  font-size: clamp(0.8rem, 2.2vw, 0.95rem);
-  color: var(--text-color);
-}
-
-.timetable tr:hover td {
-  background: var(--table-cell-hover-bg);
-}
-
-.timetable tr:last-child td {
-  border-bottom: none;
-}
-
-.map-container {
-  text-align: center;
-  margin: 2rem 0;
-}
-
-.map-img {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.map-img:hover {
-  transform: scale(1.02);
-}
-
-.map-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.map-feature {
-  background: var(--feature-bg);
-  padding: 1.5rem;
-  border-radius: 10px;
-  text-align: center;
-  border-left: 4px solid var(--feature-border);
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-.map-feature h4 {
-  color: var(--text-color);
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
-}
-
-.map-feature p {
-  margin: 0;
-  color: var(--feature-text-light);
-  font-size: 0.9rem;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.form-group label {
-  font-weight: 600;
-  color: var(--text-color);
-  font-size: 1rem;
-}
-
-input,
-textarea,
-select {
-  padding: 1rem;
-  border: 2px solid var(--input-border);
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  background: var(--input-bg);
-  color: var(--text-color);
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none;
-  border-color: var(--input-focus-border);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-  transform: translateY(-2px);
-}
-
-textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-button[type="submit"] {
-  background: var(--accent-grad);
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 1rem;
-}
-
-button[type="submit"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-}
-
-.thanks {
-  color: var(--text-color);
-  font-weight: bold;
-  margin-top: 2rem;
-  text-align: center;
-  padding: 1.5rem;
-  background: var(--thanks-bg);
-  border-radius: 10px;
-  border-left: 4px solid var(--thanks-border);
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-/* レスポンシブデザイン */
+/* Bootstrap Responsive Overrides */
 @media (max-width: 768px) {
-  nav ul {
-    padding: 0.5rem;
+  .nav-btn {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 0.8rem;
   }
 
-  nav button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+  /* hover時の幅をメニュー名に応じて設定（小画面でも適用） */
+  #nav-home:hover,
+  #nav-home:focus {
+    width: calc(50px + 3em + 24px) !important;
   }
 
-  main {
-    margin: 1rem;
-    padding: 1.5rem;
+  #nav-timetable:hover,
+  #nav-timetable:focus {
+    width: calc(50px + 7em + 24px) !important;
   }
 
-  .welcome-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  #nav-map:hover,
+  #nav-map:focus {
+    width: calc(50px + 8em + 24px) !important;
   }
 
-  .welcome-card {
-    padding: 1.5rem;
+  #nav-contact:hover,
+  #nav-contact:focus {
+    width: calc(50px + 7em + 24px) !important;
   }
 
-  .map-features {
-    grid-template-columns: 1fr;
+  .card-primary {
+    margin-bottom: 0.7rem;
   }
 
-  .timetable th,
-  .timetable td {
+  .table-custom th,
+  .table-custom td {
     padding: 0.5rem;
     font-size: 0.8rem;
   }
 }
 
 @media (max-width: 480px) {
-  header {
-    padding: 1.5rem 0.5rem;
-  }
-
-  nav ul {
-    gap: 0.25rem;
-    padding: 0.5rem;
-  }
-
-  nav button {
-    padding: 0.4rem 0.8rem;
+  .nav-btn {
     font-size: 0.8rem;
-    border-radius: 20px;
+    width: 40px !important;
+    height: 40px !important;
   }
 
-  main {
+  /* 超小画面でもhover時の幅をメニュー名に応じて設定 */
+  #nav-home:hover,
+  #nav-home:focus {
+    width: calc(50px + 3em + 24px) !important;
+  }
+
+  #nav-timetable:hover,
+  #nav-timetable:focus {
+    width: calc(50px + 7em + 24px) !important;
+  }
+
+  #nav-map:hover,
+  #nav-map:focus {
+    width: calc(50px + 8em + 24px) !important;
+  }
+
+  #nav-contact:hover,
+  #nav-contact:focus {
+    width: calc(50px + 7em + 24px) !important;
+  }
+
+  .main-custom {
     margin: 0.5rem;
     padding: 1rem;
   }
 
-  .welcome-card {
+  .card-primary {
     padding: 1rem;
   }
 
-  .timetable th,
-  .timetable td {
+  .table-custom th,
+  .table-custom td {
     padding: 0.3rem;
     font-size: 0.75rem;
   }
 
-  form {
-    gap: 1rem;
+  .form-control-custom {
+    padding: 0.8rem;
+  }
+}
+
+/* --- 独自ナビゲーションFlexレイアウト --- */
+.nav-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.5rem;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.nav-col {
+  display: flex;
+  min-width: 0;
+  flex: 0 0 50px;
+  transition: flex 0.3s ease;
+}
+
+.nav-col.active-col {
+  flex: 0 1 auto;
+}
+
+.nav-btn {
+  width: 100%;
+  min-width: 0;
+  /* 既存のスタイルはそのまま */
+}
+
+@media (max-width: 991px) {
+  .nav-row {
+    max-width: 400px;
+    gap: 0.3rem;
   }
 
-  input,
-  textarea,
-  select {
-    padding: 0.8rem;
+  .nav-col {
+    flex: 0 0 50px;
+  }
+
+  .nav-col.active-col {
+    flex: 0 1 auto;
+  }
+
+  .nav-btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-row {
+    flex-direction: row;
+    gap: 0.25rem;
+    max-width: 350px;
+  }
+
+  .nav-col {
+    flex: 0 0 45px;
+  }
+
+  .nav-col.active-col {
+    flex: 0 1 auto;
+  }
+
+  .nav-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.2rem;
   }
 }
