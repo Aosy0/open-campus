@@ -137,7 +137,6 @@ nav button {
   border-radius: 12px;
   position: relative;
   width: 100%;
-  max-width: 70px;
 }
 
 nav button .material-icons {
@@ -288,7 +287,7 @@ main {
     background-color: var(--school-blue-light) !important;
     color: white !important;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
     justify-content: flex-start;
     padding-left: 12px;
     padding-right: 16px;
@@ -529,20 +528,34 @@ main {
   }
 }
 
+nav button.active {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--school-blue-light);
+}
+
+nav button.active .material-icons {
+  transform: translateY(-1px);
+}
+
+nav button.active::after {
+  opacity: 1;
+  font-weight: 600;
+}
+
 @media (max-width: 480px) {
   nav ul {
     gap: 0.2rem;
-    max-width: 320px;
+    max-width: 100%;
   }
 
   nav button {
-    font-size: 0.8rem;
-    width: 40px !important;
-    height: 40px !important;
+    font-size: 0.75rem;
+    min-width: 60px;
+    min-height: 40px;
   }
 
   nav button.active {
-    padding: 0.4rem 0.7rem 0.4rem 0.4rem;
+    padding: 0.4rem;
     border-radius: 20px;
   }
 
