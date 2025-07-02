@@ -161,11 +161,16 @@
   const initTimeline = () => {
     setTimeout(() => {
       adjustTimelineLine();
-      // 次のイベントを中央にスクロール
+      // 次のイベントをタイムライン枠内だけスクロール
       const timelineContainer = document.querySelector('.timeline-container');
       const nextItem = timelineContainer && timelineContainer.querySelector('.timeline-item.next');
-      if (nextItem) {
-        nextItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (timelineContainer && nextItem) {
+        const offset = nextItem.offsetTop;
+        const scrollTarget = offset - timelineContainer.clientHeight / 3;
+        timelineContainer.scrollTo({
+          top: Math.max(0, scrollTarget),
+          behavior: 'smooth'
+        });
       }
     }, 100);
 

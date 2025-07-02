@@ -721,6 +721,31 @@ nav button.active::after {
   color: var(--school-text-muted);
 }
 
+/* タイムラインアイテムのリンク対応 */
+.timeline-item .timeline-content a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.timeline-item .timeline-content a:hover {
+  color: var(--school-blue-light);
+  text-decoration: underline;
+}
+
+.timeline-item.clickable {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.timeline-item.clickable:hover {
+  transform: translateX(5px);
+}
+
+.timeline-item.clickable:hover .timeline-content {
+  background: rgba(37, 99, 235, 0.05);
+}
+
 /* モバイル対応 */
 @media (max-width: 768px) {
   .timeline-container {
