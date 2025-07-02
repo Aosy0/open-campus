@@ -159,17 +159,24 @@
 
   // --- タイムライン初期化 ---
   const initTimeline = () => {
-    // 初期調整
-    setTimeout(adjustTimelineLine, 100);
+    setTimeout(() => {
+      adjustTimelineLine();
+      // 次のイベントを中央にスクロール
+      const timelineContainer = document.querySelector('.timeline-container');
+      const nextItem = timelineContainer && timelineContainer.querySelector('.timeline-item.next');
+      if (nextItem) {
+        nextItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 100);
 
     // リサイズ時に再調整
     window.addEventListener('resize', adjustTimelineLine);
   };
 
-  // --- 初期化処理 ---
+  // 初期化
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
-    initTimeline(); // タイムライン初期化を追加
+    //initTimeline(); // タイムライン初期化を追加
 
     // 初期状態でのナビゲーション調整
     adjustNavigationForScreenSize();
