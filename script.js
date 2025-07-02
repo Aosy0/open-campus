@@ -2,7 +2,6 @@
   'use strict';
 
   // DOM要素の取得
-  const themeToggleBtn = document.getElementById('theme-toggle');
   const body = document.body;
   const navContainer = document.querySelector('nav ul');
   const pages = {
@@ -12,27 +11,6 @@
     contact: document.getElementById('page-contact'),
   };
   const contactForm = document.getElementById('contact-form');
-
-  // --- テーマ切り替え機能 ---
-  const setTheme = (isDark) => {
-    body.classList.toggle('dark-mode', isDark);
-    themeToggleBtn.textContent = isDark ? '☀️ ライトモード' : '🌙 ダークモード';
-    themeToggleBtn.setAttribute('aria-pressed', isDark);
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  };
-
-  const initTheme = () => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(savedTheme === 'dark' || (!savedTheme && prefersDark));
-  };
-
-  themeToggleBtn.addEventListener('click', () => setTheme(!body.classList.contains('dark-mode')));
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-      setTheme(e.matches);
-    }
-  });
 
   // --- ページ切り替えアニメーション ---
   const showPageWithAnimation = (page) => {
@@ -106,7 +84,7 @@
 
   // --- タイムライン機能 ---
   const updateTimeline = () => {
-    // デモ用に現在時刻を10:00に固定
+    // とりあえず現在時刻を10時にしておく
     const currentTime = 600; // 10:00 = 10 * 60 + 0 = 600分
 
     const timelineItems = document.querySelectorAll('.timeline-item');
@@ -180,7 +158,6 @@
 
   // 初期化
   document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
     //initTimeline(); // タイムライン初期化を追加
 
     // 初期状態でのナビゲーション調整
