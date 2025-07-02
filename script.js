@@ -102,38 +102,74 @@
     }
   });
 
-  // --- フォーム送信処理 ---
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const thanksMessage = document.getElementById('thanks-message');
 
-    // 簡単なバリデーション
-    if (this.checkValidity() === false) {
-      // モダンなブラウザはデフォルトでバリデーションUIを表示
-      return;
-    }
 
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = '送信中...';
-    submitBtn.disabled = true;
+  // --- タイムライン機能 ---
+  const updateTimeline = () => {
+    // デモ用に現在時刻を10:00に固定
+    const currentTime = 600; // 10:00 = 10 * 60 + 0 = 600分
 
-    // 送信処理のシミュレーション
-    setTimeout(() => {
-      thanksMessage.style.display = 'block';
-      this.reset();
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
+    const timelineItems = document.querySelectorAll('.timeline-item');
 
-      setTimeout(() => {
-        thanksMessage.style.display = 'none';
-      }, 5000);
-    }, 1500);
-  });
+    if (!timelineItems.length) return;
+
+    let nextEventFound = false;
+
+    timelineItems.forEach((item, index) => {
+      const timeStr = item.dataset.time;
+      const [hours, minutes] = timeStr.split(':').map(Number);
+      const eventTime = hours * 60 + minutes;
+
+      // 各アイテムの状態をリセット
+      item.classList.remove('completed', 'next');
+
+      if (eventTime <= currentTime) {
+        // 終了したイベント
+        item.classList.add('completed');
+      } else if (!nextEventFound) {
+        // 次のイベント
+        item.classList.add('next');
+        nextEventFound = true;
+      }
+    });
+  };
+
+  // --- タイムラインの縦線調整機能 ---
+  const adjustTimelineLine = () => {
+    const timelineContainer = document.querySelector('.timeline-container');
+    const timelineLine = document.querySelector('.timeline-line');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    if (!timelineContainer || !timelineLine || timelineItems.length === 0) return;
+
+    // 最後のタイムラインアイテムを取得
+    const lastItem = timelineItems[timelineItems.length - 1];
+    const lastItemRect = lastItem.getBoundingClientRect();
+    const containerRect = timelineContainer.getBoundingClientRect();
+
+    // コンテナ内での最後のアイテムの位置を計算
+    const containerScrollTop = timelineContainer.scrollTop;
+    const lastItemTop = lastItem.offsetTop;
+    const lastItemHeight = lastItem.offsetHeight;
+
+    // 縦線の高さを最後のアイテムの中央まで設定
+    const lineHeight = lastItemTop + (lastItemHeight / 2);
+    timelineLine.style.height = `${lineHeight}px`;
+  };
+
+  // --- タイムライン初期化 ---
+  const initTimeline = () => {
+    // 初期調整
+    setTimeout(adjustTimelineLine, 100);
+
+    // リサイズ時に再調整
+    window.addEventListener('resize', adjustTimelineLine);
+  };
 
   // --- 初期化処理 ---
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
+    initTimeline(); // タイムライン初期化を追加
 
     // 初期状態でのナビゲーション調整
     adjustNavigationForScreenSize();
@@ -160,6 +196,10 @@
     }, { threshold: 0.1 });
 
     elements.forEach(el => observer.observe(el));
+
+    updateTimeline();
+    initTimeline();
+
   });
 
   // --- リサイズ時のナビゲーション調整 ---

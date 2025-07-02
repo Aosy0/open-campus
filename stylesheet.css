@@ -578,3 +578,174 @@ nav button.active::after {
     padding: 0.8rem;
   }
 }
+
+/* 次に参加するイベント */
+.timeline-section {
+  background: rgba(248, 250, 252, 0.8);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(30, 58, 138, 0.1);
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid rgba(30, 58, 138, 0.1);
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* タイムラインのスクロールバー*/
+.timeline-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.timeline-container::-webkit-scrollbar-track {
+  background: rgba(30, 58, 138, 0.05);
+  border-radius: 3px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+  background: var(--school-blue-light);
+  border-radius: 3px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb:hover {
+  background: var(--school-blue);
+}
+
+/* タイムラインの縦線が途切れないように修正 */
+.timeline-line {
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 3px;
+  background-color: var(--school-blue-light);
+  border-radius: 2px;
+  /* height は JavaScript で動的に設定 */
+}
+
+
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 80px;
+  transition: all 0.3s ease;
+}
+
+.timeline-item.completed {
+  opacity: 0.5;
+}
+
+.timeline-item.completed .timeline-dot {
+  background-color: #94a3b8;
+  border-color: #94a3b8;
+}
+
+.timeline-item.completed .timeline-content {
+  color: #64748b;
+}
+
+.timeline-item.next {
+  background: rgba(37, 99, 235, 0.05);
+  border-radius: 8px;
+  padding: 0.5rem;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  padding-left: 80px;
+}
+
+.timeline-item.next .timeline-dot {
+  background-color: var(--school-blue-light);
+  border-color: var(--school-blue-light);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.1);
+  }
+
+  100% {
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+  }
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 21px;
+  top: 8px;
+  width: 18px;
+  height: 18px;
+  background-color: var(--school-blue);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2);
+  z-index: 2;
+}
+
+.timeline-content {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.08);
+  border: 1px solid rgba(30, 58, 138, 0.1);
+}
+
+.timeline-time {
+  font-weight: 600;
+  color: var(--school-blue);
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-event {
+  font-weight: 500;
+  color: #1e293b;
+  margin-bottom: 0.2rem;
+}
+
+.timeline-location {
+  font-size: 0.9rem;
+  color: var(--school-text-muted);
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+  .timeline-container {
+    padding: 1rem 1rem 1rem 0.5rem;
+    height: 350px;
+  }
+
+  .timeline-item {
+    padding-left: 60px;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-item.next {
+    padding-left: 60px;
+  }
+
+  .timeline-line {
+    left: 25px;
+    top: 0;
+    /* height は JavaScript で動的に設定（モバイル版） */
+  }
+
+  .timeline-dot {
+    left: 16px;
+    width: 16px;
+    height: 16px;
+  }
+}
