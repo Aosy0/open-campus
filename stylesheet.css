@@ -1,3 +1,12 @@
+/* btn-outline-primary のホバー時の文字色 */
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  color: #fff !important;
+  background-color: var(--school-blue-light) !important;
+  border-color: var(--school-blue-light) !important;
+  transition: all 0.15s ease !important;
+}
+
 :root {
   --bs-primary: #1e3a8a;
   --bs-primary-rgb: 30, 58, 138;
@@ -741,4 +750,44 @@ nav button.active::after {
 /* 小さいアイコン用の調整 */
 .material-icons[style*="font-size: 16px"] {
   vertical-align: text-bottom;
+}
+
+/* タイムラインカードリンク */
+.timeline-content-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.timeline-content-link:hover {
+  color: inherit;
+  text-decoration: none;
+  background: rgba(37, 99, 235, 0.05);
+}
+
+.timeline-content-link:hover .timeline-arrow {
+  transform: translateY(-50%) translateX(2px);
+  color: var(--school-blue-light);
+}
+
+/* タイムラインのカードの矢印 */
+.timeline-arrow {
+  position: absolute;
+  right: 10px;
+  /* 矢印の上端が親要素の50%の位置 */
+  top: 50%;
+  /* 矢印を自身の半分の高さだけ上に移動　真の中央揃え */
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--school-text-muted);
+  transition: all 0.2s ease;
+}
+
+.timeline-arrow .material-icons {
+  font-size: 16px;
+  line-height: 1;
 }
