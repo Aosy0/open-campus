@@ -17,9 +17,6 @@
     <div class="container">
       <h1 class="display-4 fw-bold mb-2 page-title-responsive">〇〇大学<wbr> オープンキャンパス</h1>
       <p class="lead mb-3">ようこそ！大学の魅力を体験しよう</p>
-      <button id="theme-toggle" class="btn theme-toggle" aria-label="テーマ切り替え">
-        <span class="material-icons me-2">dark_mode</span> ダークモード
-      </button>
     </div>
   </header>
   <nav>
@@ -37,9 +34,6 @@
   <main class="container my-4">
     <div class="main-custom p-4">
       <section id="page-home" class="fade-in">
-        <h2 class="section-title text-center mb-4">オープンキャンパスへようこそ</h2>
-        <p class="text-center mb-4">〇〇大学のオープンキャンパスへご参加いただきありがとうございます。<br>
-          充実したプログラムで大学生活の魅力を体験していただけます。</p>
 
         <!-- 次に参加するイベントセクション -->
         <div class="timeline-section mb-4">
@@ -72,11 +66,15 @@
             <div class="timeline-item" data-time="11:00">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
-                <div class="timeline-time">11:00</div>
-                <div class="timeline-event">
-                  <a href="guidance.html" class="text-decoration-none text-dark">学科別ガイダンス</a>
+                <div>
+                  <div class="timeline-time mb-1">11:00</div>
+                  <div class="timeline-event mb-1">学科別ガイダンス</div>
                 </div>
-                <div class="timeline-location">各学科教室</div>
+                <div class="d-flex align-items-end justify-content-between w-100">
+                  <div class="timeline-location text-muted">各学科教室</div>
+                  <a href="guidance.html" class="btn btn-outline-primary btn-sm ms-2"
+                    style="white-space:nowrap;">詳細はこちら</a>
+                </div>
               </div>
             </div>
 
