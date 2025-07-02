@@ -19,7 +19,7 @@
   --bs-light: #f8fafc;
   --bs-dark: #1e293b;
 
-  /* School Specific Colors */
+  /* スクールカラーとして定義しておく */
   --school-blue: #1e3a8a;
   --school-blue-light: #2563eb;
   --school-blue-dark: #0c1426;
@@ -27,13 +27,7 @@
   --school-bg-main: #fff;
   --school-text-muted: #64748b;
 
-  --nav-btn-bg: rgba(255, 255, 255, 0.9);
-  --nav-btn-text: #2d3e50;
-  --nav-btn-text: #2d3e50;
-  --nav-btn-active-bg: #2d3e50;
-  --nav-btn-active-bg: #2d3e50;
-  --nav-btn-active-text: #fff;
-  --nav-btn-active-text: #fff;
+
 }
 
 /* Custom Body Styling */
@@ -75,6 +69,7 @@ body {
   box-shadow: 0 2px 10px rgba(30, 58, 138, 0.08);
 }
 
+/* ナビゲーション - モバイル版（デフォルト） */
 nav {
   position: fixed;
   bottom: 0;
@@ -139,6 +134,8 @@ nav button::after {
 
 nav button:hover {
   background-color: rgba(30, 58, 138, 0.05);
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 nav button.active {
@@ -158,19 +155,14 @@ nav button.active::after {
 /* ボトムナビ用のページ下部パディング */
 main {
   padding-bottom: 80px;
-  /* ボトムナビの高さ分 */
 }
 
-/* --- ナビゲーションラベル表示制御 --- */
 .nav-label {
   display: none;
-  /* 疑似要素を使用するため非表示 */
 }
 
 /* PC版ナビゲーション */
 @media (min-width: 768px) {
-
-  /* ナビゲーションを上部に移動 */
   nav {
     position: static;
     box-shadow: 0 2px 8px rgba(30, 58, 138, 0.08);
@@ -178,7 +170,6 @@ main {
     border-top: none;
   }
 
-  /* ページの下部パディングを削除 */
   main {
     padding-bottom: 0;
   }
@@ -192,77 +183,49 @@ main {
   }
 
   nav li {
-    flex: 0 0 50px;
+    flex: 0 0 auto;
     justify-content: flex-start;
   }
 
   nav button {
     background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 2px 8px rgba(30, 58, 138, 0.1);
-    border-radius: 25px;
+    border-radius: 12px;
     flex-direction: row;
-    padding: 0.7rem;
-    width: 50px;
+    padding: 0.7rem 1rem;
+    min-width: auto;
+    width: auto;
     max-width: none;
     min-height: 50px;
-    overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   nav button .material-icons {
     font-size: 24px;
     margin-bottom: 0;
     margin-right: 0;
-    transition: margin-right 0.3s ease;
   }
 
   nav button::after {
-    position: absolute;
-    left: 44px;
-    top: 50%;
-    transform: translateY(-50%) translateX(-10px);
-    opacity: 0;
+    position: static;
+    transform: none;
+    opacity: 1;
     font-size: 0.85rem;
     font-weight: 600;
     margin-top: 0;
-    transition: all 0.3s ease 0.1s;
-    pointer-events: none;
-    z-index: 1;
+    pointer-events: auto;
+    z-index: auto;
   }
 
   nav button:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
     background-color: rgba(255, 255, 255, 1);
-    justify-content: flex-start;
-    padding-left: 12px;
-    padding-right: 16px;
-  }
-
-  nav button:hover .material-icons {
-    margin-right: 8px;
-  }
-
-  nav button:hover::after {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
-  }
-
-  /* 各ボタンのホバー時の幅設定 */
-  nav button[title="トップ"]:hover {
-    width: calc(50px + 0.85em * 3 + 32px);
-  }
-
-  nav button[title="タイムテーブル"]:hover {
-    width: calc(50px + 0.85em * 7 + 32px);
-  }
-
-  nav button[title="キャンパスマップ"]:hover {
-    width: calc(50px + 0.85em * 8 + 32px);
-  }
-
-  nav button[title="お問い合わせ"]:hover {
-    width: calc(50px + 0.85em * 7 + 32px);
+    margin-left: 0;
+    margin-right: 0;
   }
 
   nav button.active {
@@ -270,66 +233,24 @@ main {
     color: white !important;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
-    justify-content: flex-start;
-    padding-left: 12px;
-    padding-right: 16px;
   }
 
   nav button.active .material-icons {
-    margin-right: 8px;
+    margin-right: 0;
   }
 
   nav button.active::after {
     opacity: 1;
-    transform: translateY(-50%) translateX(0);
+    transform: none;
   }
 
-  /* アクティブボタンの幅設定 */
-  nav button.active[title="トップ"] {
-    width: calc(50px + 0.85em * 3 + 32px);
-  }
-
-  nav button.active[title="タイムテーブル"] {
-    width: calc(50px + 0.85em * 7 + 32px);
-  }
-
-  nav button.active[title="キャンパスマップ"] {
-    width: calc(50px + 0.85em * 8 + 32px);
-  }
-
-  nav button.active[title="お問い合わせ"] {
-    width: calc(50px + 0.85em * 7 + 32px);
-  }
-}
-
-/* クリック時のエフェクト（PC版のみ） */
-@media (min-width: 768px) {
   nav button:active {
     transform: translateY(0);
     transition: transform 0.1s ease;
   }
-
-  nav button:active::after,
-  nav button.clicking::after {
-    opacity: 0 !important;
-    transform: translateY(-50%) translateX(-10px) !important;
-    transition: all 0.1s ease !important;
-  }
-
-  nav button:hover:active::after,
-  nav button:hover.clicking::after {
-    opacity: 0 !important;
-    transform: translateY(-50%) translateX(-10px) !important;
-  }
 }
 
-/* --- ナビゲーションラベル表示制御 --- */
-.nav-label {
-  display: none;
-  /* 疑似要素を使用するため非表示 */
-}
 
-/* Main Content Styling - モバイルファースト */
 .main-custom {
   background-color: #fff;
   border-radius: 0;
@@ -476,10 +397,15 @@ main {
   }
 }
 
-/* Bootstrap Responsive Overrides */
+/* モバイル版レスポンシブ調整 */
 @media (max-width: 768px) {
   nav button {
     font-size: 0.8rem;
+  }
+
+  nav button.active {
+    margin-left: 10%;
+    margin-right: 10%;
   }
 
   .card-primary {
@@ -491,20 +417,6 @@ main {
     padding: 0.5rem;
     font-size: 0.8rem;
   }
-}
-
-nav button.active {
-  background-color: rgba(37, 99, 235, 0.1);
-  color: var(--school-blue-light);
-}
-
-nav button.active .material-icons {
-  transform: translateY(-1px);
-}
-
-nav button.active::after {
-  opacity: 1;
-  font-weight: 600;
 }
 
 @media (max-width: 480px) {
@@ -521,7 +433,8 @@ nav button.active::after {
 
   nav button.active {
     padding: 0.4rem;
-    border-radius: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .main-custom {
@@ -740,8 +653,7 @@ nav button.active::after {
   }
 }
 
-/* Material Iconsの垂直位置調整 */
-/* Material Iconsの垂直位置微調整 */
+/* Material Icons の垂直位置調整 */
 .material-icons {
   vertical-align: -0.15em;
   line-height: 1em;
