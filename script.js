@@ -1,5 +1,5 @@
 (() => {
-  'use strict';
+  'use strict'; //厳格モード　ちゃんとエラー出してくれる
 
   // DOM要素の取得
   const body = document.body;
