@@ -516,6 +516,12 @@ a .card-primary,
   .form-control-custom {
     padding: 0.8rem;
   }
+
+  .timeline-content {
+    padding-right: 2rem !important;
+    margin-left: -0.5rem;
+    /* カードを左側に少し伸ばす */
+  }
 }
 
 /* 次に参加するイベント */
@@ -575,7 +581,7 @@ a .card-primary,
   position: absolute;
   left: 10px;
   top: 50%;
-  width: 50px;
+  width: 20px;
   height: 2px;
   transform: translateY(-50%);
   background-image: linear-gradient(to right, var(--school-blue-light) 50%, transparent 50%);
@@ -727,6 +733,7 @@ a .card-primary,
   width: 100%;
   margin: 1rem 0;
   z-index: 10;
+  margin-bottom: 3rem;
 }
 
 .timeline-current-line {
@@ -763,25 +770,37 @@ a .card-primary,
   }
 
   .timeline-current-line {
-    left: 9px;
+    left: 21px;
     right: -25;
   }
 
-  .timeline-content::before {
-    left: -35px;
-    width: 15px;
+  .timeline-item::before {
+    left: 30px;
+    width: 20px;
+    z-index: 0;
+    /* モバイル版でカードの背景より確実に下に配置 */
   }
 
   .timeline-dot {
-    left: -1.5px;
+    left: 10px;
   }
 
   .timeline-item.completed .timeline-dot {
-    left: -1.5px;
+    left: 10px;
   }
 
   .timeline-item.next .timeline-dot {
-    left: 6.5px;
+    left: 18px;
+  }
+
+  .timeline-container {
+    padding: 1rem 0.75rem;
+    /* 左右パディングを少し減らしてカードを横長に */
+  }
+
+  .timeline-item {
+    padding-left: 40px;
+    /* パディングをさらに減らして左側の横幅を確保 */
   }
 }
 
