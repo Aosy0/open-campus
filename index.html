@@ -39,8 +39,8 @@
   </nav>
   <main class="container my-4"> <!-- containerのy軸に4のmargin -->
     <div class="main-custom p-4"> <!-- 全方向（padding）に4の余白を付ける -->
-      <section id="page-home" class="fade-in">
-
+      <!-- トップページ -->
+      <section id="page-home" class="fade-in"> <!-- fade-inでアニメーション -->
         <!-- 次のイベントのタイムライン -->
         <div class="timeline-section mb-4"> <!-- bottomに4のmargin-->
           <h3 class="h5 mb-4 text-center">
@@ -147,16 +147,19 @@
         <!-- イベント・サービス紹介 -->
         <h3 class="section-title text-center mb-4">イベント・サービス一覧</h3>
         <div class="row g-4 mt-3"> <!-- グリッドレイアウトの行　ガター（列間・行間の余白）を4に　topに1のmargin -->
-          <!-- 学科説明会 -->
+          <!-- 学科別ガイダンス -->
           <div class="col-12 col-md-6 col-lg-3"> <!-- 画面幅が狭いときは1列、中くらいのときは2列、広いときは4列 -->
-            <div class="card card-primary h-100 text-center"> <!-- bootstrapのカードコンポーネント カードの高さを100% テキストを中央寄せ -->
-              <div class="card-body">
-                <h5 class="card-title">
-                  <span class="material-icons me-2">school</span> 学科説明会
-                </h5>
-                <p class="card-text">各学科の特色ある教育内容や就職状況について詳しくご紹介します</p>
+            <!-- カードをリンク化　guidance.htmlに移動 -->
+            <a href="guidance.html" class="timeline-content timeline-content-link">
+              <div class="card card-primary h-100 text-center"> <!-- bootstrapのカードコンポーネント カードの高さを100% テキストを中央寄せ -->
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <span class="material-icons me-2">school</span> 学科別ガイダンス
+                  </h5>
+                  <p class="card-text">各学科の特色ある教育内容や就職状況について詳しくご紹介します</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
 
           <!-- キャンパスツアー -->
@@ -170,6 +173,8 @@
               </div>
             </div>
           </div>
+
+          <!-- 個別相談 -->
           <div class="col-12 col-md-6 col-lg-3">
             <div class="card card-primary h-100 text-center">
               <div class="card-body">
@@ -180,6 +185,8 @@
               </div>
             </div>
           </div>
+
+          <!-- 学食体験 -->
           <div class="col-12 col-md-6 col-lg-3">
             <div class="card card-primary h-100 text-center">
               <div class="card-body">
@@ -192,12 +199,16 @@
           </div>
         </div>
       </section>
-      <section id="page-timetable" class="fade-in" style="display:none;">
+      <!-- トップページここまで -->
+
+      <!-- タイムテーブル -->
+      <section id="page-timetable" class="fade-in" style="display:none;"> <!-- display:noneで最初は非表示 -->
         <h2 class="section-title text-center mb-4">タイムテーブル</h2>
-        <div class="table-responsive">
-          <table class="table table-custom">
+        <div class="table-responsive"> <!-- テーブルが横長になったら横スクロールできるようになる -->
+          <table class="table table-custom"> <!-- bootstrapの基本的なテーブルデザイン -->
             <thead>
-              <tr>
+              <tr> <!-- table row -->
+                <!-- 見出しの行 -->
                 <th scope="col">時間</th>
                 <th scope="col">イベント</th>
                 <th scope="col">場所</th>
@@ -248,14 +259,17 @@
           </table>
         </div>
       </section>
+      <!-- タイムテーブルここまで -->
+
+      <!-- キャンパスマップ -->
       <section id="page-map" class="fade-in" style="display:none;">
         <h2 class="section-title text-center mb-4">キャンパスマップ</h2>
         <div class="text-center mb-4">
           <img src="https://placehold.jp/600x350/667eea/ffffff?text=Campus+Map" alt="キャンパスマップ"
             class="img-fluid img-custom">
-          <p class="mt-3">主要な建物や集合場所をご確認ください。</p>
         </div>
 
+        <!-- 主要な建物-->
         <div class="row g-3">
           <div class="col-12 col-md-6 col-lg-4">
             <div class="feature-card p-3 h-100">
@@ -307,10 +321,13 @@
           </div>
         </div>
       </section>
+      <!-- キャンパスマップここまで -->
+
+      <!-- お問い合わせ -->
       <section id="page-contact" class="fade-in" style="display:none;">
         <h2 class="section-title text-center mb-4">お問い合わせ</h2>
         <div class="row justify-content-center">
-          <div class="col-12 col-lg-8">
+          <div class="col-12 col-lg-8"> <!-- 画面幅が広いときはcol-8で左右に余白 -->
             <form id="contact-form">
               <div class="mb-3">
                 <label for="name" class="form-label fw-semibold">お名前 *</label>
@@ -319,26 +336,6 @@
               <div class="mb-3">
                 <label for="email" class="form-label fw-semibold">メールアドレス *</label>
                 <input type="email" class="form-control form-control-custom" id="email" name="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="phone" class="form-label fw-semibold">電話番号</label>
-                <input type="tel" class="form-control form-control-custom" id="phone" name="phone">
-              </div>
-              <div class="mb-3">
-                <label for="school" class="form-label fw-semibold">在籍校名</label>
-                <input type="text" class="form-control form-control-custom" id="school" name="school">
-              </div>
-              <div class="mb-3">
-                <label for="category" class="form-label fw-semibold">お問い合わせ種別</label>
-                <select class="form-select form-control-custom" id="category" name="category">
-                  <option value="">選択してください</option>
-                  <option value="entrance">入試について</option>
-                  <option value="curriculum">カリキュラムについて</option>
-                  <option value="campus-life">キャンパスライフについて</option>
-                  <option value="support">就職・資格支援について</option>
-                  <option value="facilities">施設・設備について</option>
-                  <option value="other">その他</option>
-                </select>
               </div>
               <div class="mb-3">
                 <label for="message" class="form-label fw-semibold">ご質問・ご要望 *</label>
@@ -356,9 +353,12 @@
           </div>
         </div>
       </section>
+      <!-- お問い合わせここまで -->
+
     </div>
   </main>
-  <!-- Bootstrap JS (Optional - only if you need interactive components) -->
+
+  <!-- bootstrapのJSを読み込む -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
