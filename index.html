@@ -5,22 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>〇〇大学 オープンキャンパス | 大学の魅力を体験しよう</title>
+  <!-- bootstrapの読み込み -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="stylesheet.css">
+  <!-- google fontsのサーバーに事前に接続して読み込みを最適化 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- preloadしておくと読み込みが早くなるらしい -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
   <header class="header-custom text-center py-4">
     <div class="container">
+      <!-- 1行に収まらないときはwbrのところで改行-->
       <h1 class="display-4 fw-bold mb-2 page-title-responsive">〇〇大学<wbr> オープンキャンパス</h1>
       <p class="lead mb-3">ようこそ！大学の魅力を体験しよう</p>
     </div>
   </header>
   <nav>
-    <ul>
+    <ul> <!-- 順序なしリスト -->
+      <!-- 前後に改行が入るときはdiv、入らないときはspan -->
       <li><button id="nav-home" class="active" aria-current="page" title="トップ"><span
             class="material-icons">home</span><span class="nav-label">トップ</span></button></li>
       <li><button id="nav-timetable" title="タイムテーブル"><span class="material-icons">schedule</span><span
@@ -31,34 +37,35 @@
             class="nav-label">お問い合わせ</span></button></li>
     </ul>
   </nav>
-  <main class="container my-4">
-    <div class="main-custom p-4">
+  <main class="container my-4"> <!-- containerのy軸に4のmargin -->
+    <div class="main-custom p-4"> <!-- 全方向（padding）に4の余白を付ける -->
       <section id="page-home" class="fade-in">
 
-        <!-- 次に参加するイベントセクション -->
-        <div class="timeline-section mb-4">
+        <!-- 次のイベントのタイムライン -->
+        <div class="timeline-section mb-4"> <!-- bottomに4のmargin-->
           <h3 class="h5 mb-4 text-center">
             <span class="material-icons me-2">access_time</span>次のイベント
           </h3>
           <div class="timeline-container">
-            <!-- タイムライン縦線 -->
+            <!-- タイムラインの縦線 -->
             <div class="timeline-line"></div>
 
-            <!-- イベントアイテム -->
+            <!-- 受付開始 -->
             <div class="timeline-item" data-time="09:30">
-              <div class="timeline-dot"></div>
-              <a href="#reception" class="timeline-content timeline-content-link">
-                <div>
-                  <div class="timeline-time mb-1">09:30</div>
-                  <div class="timeline-event mb-1">受付開始</div>
-                </div>
-                <div class="timeline-location text-muted">正門エントランス</div>
-                <span class="timeline-arrow">
-                  <span class="material-icons">arrow_forward_ios</span>
-                </span>
-              </a>
+              <div class="timeline-dot"></div> <!-- タイムラインのドット -->
+              <!-- <a href="#reception" class="timeline-content timeline-content-link"> -->
+              <div>
+                <div class="timeline-time mb-1">09:30</div>
+                <div class="timeline-event mb-1">受付開始</div>
+              </div>
+              <div class="timeline-location text-muted">正門エントランス</div> <!-- text-mutedで文字を薄くする -->
+              <span class="timeline-arrow"> <!-- タイムラインの矢印 -->
+                <span class="material-icons">arrow_forward_ios</span>
+              </span>
+              <!-- </a> -->
             </div>
 
+            <!-- 全体説明会 -->
             <div class="timeline-item" data-time="10:00">
               <div class="timeline-dot"></div>
               <a href="#explanation" class="timeline-content timeline-content-link">
@@ -73,8 +80,10 @@
               </a>
             </div>
 
+            <!-- 学科別ガイダンス -->
             <div class="timeline-item" data-time="11:00">
               <div class="timeline-dot"></div>
+              <!-- このカードを選択するとguidance.htmlに遷移 -->
               <a href="guidance.html" class="timeline-content timeline-content-link">
                 <div>
                   <div class="timeline-time mb-1">11:00</div>
@@ -87,6 +96,7 @@
               </a>
             </div>
 
+            <!-- 学食体験・昼食 -->
             <div class="timeline-item" data-time="12:00">
               <div class="timeline-dot"></div>
               <a href="#cafeteria" class="timeline-content timeline-content-link">
@@ -101,6 +111,7 @@
               </a>
             </div>
 
+            <!-- キャンパスツアー -->
             <div class="timeline-item" data-time="13:00">
               <div class="timeline-dot"></div>
               <a href="#tour" class="timeline-content timeline-content-link">
@@ -115,6 +126,7 @@
               </a>
             </div>
 
+            <!-- 個別相談 -->
             <div class="timeline-item" data-time="14:00">
               <div class="timeline-dot"></div>
               <a href="#consultation" class="timeline-content timeline-content-link">
@@ -130,12 +142,14 @@
             </div>
           </div>
         </div>
+        <!-- タイムラインここまで -->
 
-        <!-- イベント・サービス紹介セクション -->
+        <!-- イベント・サービス紹介 -->
         <h3 class="section-title text-center mb-4">イベント・サービス一覧</h3>
-        <div class="row g-4 mt-3">
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="card card-primary h-100 text-center">
+        <div class="row g-4 mt-3"> <!-- グリッドレイアウトの行　ガター（列間・行間の余白）を4に　topに1のmargin -->
+          <!-- 学科説明会 -->
+          <div class="col-12 col-md-6 col-lg-3"> <!-- 画面幅が狭いときは1列、中くらいのときは2列、広いときは4列 -->
+            <div class="card card-primary h-100 text-center"> <!-- bootstrapのカードコンポーネント カードの高さを100% テキストを中央寄せ -->
               <div class="card-body">
                 <h5 class="card-title">
                   <span class="material-icons me-2">school</span> 学科説明会
@@ -144,6 +158,8 @@
               </div>
             </div>
           </div>
+
+          <!-- キャンパスツアー -->
           <div class="col-12 col-md-6 col-lg-3">
             <div class="card card-primary h-100 text-center">
               <div class="card-body">
