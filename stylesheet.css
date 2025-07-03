@@ -531,7 +531,7 @@ a .card-primary,
   max-width: 600px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
-  height: 400px;
+  height: 350px;
   overflow-x: hidden;
   overflow-y: auto;
   border: 1px solid rgba(30, 58, 138, 0.1);
@@ -676,9 +676,10 @@ a .card-primary,
   background: #fff;
   padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.08);
+  box-shadow: 0 1px 4px rgba(30, 58, 138, 0.06);
   border: 1px solid rgba(30, 58, 138, 0.1);
   position: relative;
+  z-index: 1;
 }
 
 .timeline-time {

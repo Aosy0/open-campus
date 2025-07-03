@@ -128,14 +128,15 @@
   const initTimeline = () => {
     setTimeout(() => {
       adjustTimelineLine();
-      // 次のイベントをタイムライン枠内だけスクロール
+      // 現在時刻ラインをタイムライン枠の一番上にスクロール
       const timelineContainer = document.querySelector('.timeline-container');
-      const nextItem = timelineContainer && timelineContainer.querySelector('.timeline-item.next');
-      if (timelineContainer && nextItem) {
-        const offset = nextItem.offsetTop;
-        const scrollTarget = offset - timelineContainer.clientHeight / 3;
+      const currentTimeLine = timelineContainer && timelineContainer.querySelector('.timeline-current-time');
+      if (timelineContainer && currentTimeLine) {
+        // 現在時刻ラインのtopがコンテナのtopからどれだけ離れているか
+        const offset = currentTimeLine.offsetTop;
+        // 少しだけ余裕を持たせてスクロール
         timelineContainer.scrollTo({
-          top: Math.max(0, scrollTarget),
+          top: Math.max(0, offset - 20),
           behavior: 'smooth'
         });
       }
@@ -183,6 +184,6 @@
 
     updateTimeline();
     initTimeline();
-
+    // タイムラインの上下シャドウ動的切り替え処理は不要なので削除
   });
 })();
