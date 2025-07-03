@@ -284,10 +284,62 @@ main {
   box-shadow: 0 4px 12px rgba(30, 58, 138, 0.08);
   border: 1.5px solid var(--school-blue-light);
   transition: background 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  padding-right: 20px !important;
 }
 
 .card-primary:hover {
   background: rgba(37, 99, 235, 0.05) !important;
+}
+
+/* カードの説明文を左揃えに */
+.card-primary .card-text,
+.card-primary p {
+  text-align: left !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* カードの右端に矢印を追加 */
+.card-primary::after {
+  content: '';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid var(--school-text-muted);
+  border-right: 2px solid var(--school-text-muted);
+  transform: translateY(-50%) rotate(45deg);
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+/* ホバー時の矢印アニメーション */
+.card-primary:hover::after {
+  transform: translateY(-50%) rotate(45deg) translateX(2px);
+  border-color: var(--school-blue-light);
+}
+
+/* リンクカード用のスタイル */
+a .card-primary,
+.card-link .card-primary {
+  cursor: pointer;
+}
+
+/* 非インタラクティブなカード（学科別ガイダンスページなど）のスタイル */
+.card-static {
+  padding-right: 1rem !important;
+}
+
+.card-static::after {
+  display: none !important;
+}
+
+.card-static:hover {
+  background: #fff !important;
+  transform: none !important;
 }
 
 /* Table Styling */
@@ -342,6 +394,7 @@ main {
   border: none;
   border-radius: 8px;
   transition: all 0.3s ease;
+  color: #fff;
 }
 
 .btn-primary-custom:hover {
@@ -515,18 +568,18 @@ main {
 }
 
 /* タイムラインのドットと各アイテムを結ぶ点線 */
-.timeline-content::before {
+.timeline-item::before {
   content: '';
   position: absolute;
-  left: -35px;
+  left: 10px;
   top: 50%;
-  width: 20px;
+  width: 50px;
   height: 2px;
   transform: translateY(-50%);
   background-image: linear-gradient(to right, var(--school-blue-light) 50%, transparent 50%);
   background-size: 6px 2px;
   background-repeat: repeat-x;
-  z-index: 1;
+  z-index: 0;
 }
 
 
@@ -731,9 +784,9 @@ main {
 
 /* PC版での点線位置調整 */
 @media (min-width: 769px) {
-  .timeline-content::before {
-    left: -35px;
-    width: 20px;
+  .timeline-item::before {
+    left: 10px;
+    width: 40px;
   }
 }
 
