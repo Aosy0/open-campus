@@ -116,23 +116,12 @@
   const adjustTimelineLine = () => {
     const timelineContainer = document.querySelector('.timeline-container');
     const timelineLine = document.querySelector('.timeline-line');
-    const timelineItems = document.querySelectorAll('.timeline-item');
 
-    if (!timelineContainer || !timelineLine || timelineItems.length === 0) return;
+    if (!timelineContainer || !timelineLine) return;
 
-    // 最後のタイムラインアイテムを取得
-    const lastItem = timelineItems[timelineItems.length - 1];
-    const lastItemRect = lastItem.getBoundingClientRect();
-    const containerRect = timelineContainer.getBoundingClientRect();
-
-    // コンテナ内での最後のアイテムの位置を計算
-    const containerScrollTop = timelineContainer.scrollTop;
-    const lastItemTop = lastItem.offsetTop;
-    const lastItemHeight = lastItem.offsetHeight;
-
-    // 縦線の高さを最後のアイテムの中央まで設定
-    const lineHeight = lastItemTop + (lastItemHeight / 2);
-    timelineLine.style.height = `${lineHeight}px`;
+    // コンテナの高さ全体まで縦線を延ばす
+    const containerHeight = timelineContainer.scrollHeight;
+    timelineLine.style.height = `${containerHeight}px`;
   };
 
   // --- タイムライン初期化 ---
@@ -155,6 +144,12 @@
     // リサイズ時に再調整
     window.addEventListener('resize', adjustTimelineLine);
   };
+
+  // --- リサイズ時のナビゲーション調整 ---
+  const adjustNavigationForScreenSize = () => {
+  };
+
+  window.addEventListener('resize', adjustNavigationForScreenSize);
 
   // 初期化
   document.addEventListener('DOMContentLoaded', () => {
@@ -190,10 +185,4 @@
     initTimeline();
 
   });
-
-  // --- リサイズ時のナビゲーション調整 ---
-  const adjustNavigationForScreenSize = () => {
-  };
-
-  window.addEventListener('resize', adjustNavigationForScreenSize);
 })();

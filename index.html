@@ -21,7 +21,7 @@
     <div class="container">
       <!-- 1行に収まらないときはwbrのところで改行-->
       <h1 class="display-4 fw-bold mb-2 page-title-responsive">〇〇大学<wbr> オープンキャンパス</h1>
-      <p class="lead mb-3">ようこそ！大学の魅力を体験しよう</p>
+      <p class="lead mb-0">ようこそ！大学の魅力を体験しよう</p>
     </div>
   </header>
   <nav>
@@ -37,7 +37,7 @@
             class="nav-label">お問い合わせ</span></button></li>
     </ul>
   </nav>
-  <main class="container my-4"> <!-- containerのy軸に4のmargin -->
+  <main class="container my-2"> <!-- containerのy軸に4のmargin -->
     <div class="main-custom p-4"> <!-- 全方向（padding）に4の余白を付ける -->
       <!-- トップページ -->
       <section id="page-home" class="fade-in"> <!-- fade-inでアニメーション -->
@@ -53,16 +53,16 @@
             <!-- 受付開始 -->
             <div class="timeline-item" data-time="09:30">
               <div class="timeline-dot"></div> <!-- タイムラインのドット -->
-              <!-- <a href="#reception" class="timeline-content timeline-content-link"> -->
-              <div>
-                <div class="timeline-time mb-1">09:30</div>
-                <div class="timeline-event mb-1">受付開始</div>
-              </div>
-              <div class="timeline-location text-muted">正門エントランス</div> <!-- text-mutedで文字を薄くする -->
-              <span class="timeline-arrow"> <!-- タイムラインの矢印 -->
-                <span class="material-icons">arrow_forward_ios</span>
-              </span>
-              <!-- </a> -->
+              <a href="#reception" class="timeline-content timeline-content-link">
+                <div>
+                  <div class="timeline-time mb-1">09:30</div>
+                  <div class="timeline-event mb-1">受付開始</div>
+                </div>
+                <div class="timeline-location text-muted">正門エントランス</div> <!-- text-mutedで文字を薄くする -->
+                <span class="timeline-arrow"> <!-- タイムラインの矢印 -->
+                  <span class="material-icons">arrow_forward_ios</span>
+                </span>
+              </a>
             </div>
 
             <!-- 全体説明会 -->
@@ -78,6 +78,12 @@
                   <span class="material-icons">arrow_forward_ios</span>
                 </span>
               </a>
+            </div>
+
+            <!-- 現在時刻ライン -->
+            <div class="timeline-current-time">
+              <div class="timeline-current-line"></div>
+              <div class="timeline-current-text"> 現在時刻 10:45 </div>
             </div>
 
             <!-- 学科別ガイダンス -->
@@ -149,8 +155,7 @@
         <div class="row g-4 mt-3"> <!-- グリッドレイアウトの行　ガター（列間・行間の余白）を4に　topに1のmargin -->
           <!-- 学科別ガイダンス -->
           <div class="col-12 col-md-6 col-lg-3"> <!-- 画面幅が狭いときは1列、中くらいのときは2列、広いときは4列 -->
-            <!-- カードをリンク化　guidance.htmlに移動 -->
-            <a href="guidance.html" class="timeline-content timeline-content-link">
+            <a href="guidance.html" class="text-decoration-none">
               <div class="card card-primary h-100 text-center"> <!-- bootstrapのカードコンポーネント カードの高さを100% テキストを中央寄せ -->
                 <div class="card-body">
                   <h5 class="card-title">
