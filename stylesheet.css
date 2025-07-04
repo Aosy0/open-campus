@@ -354,13 +354,12 @@ main {
   position: absolute;
   right: 15px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(0) rotate(45deg);
   width: 8px;
   height: 8px;
   border-top: 2px solid var(--school-text-muted);
   /* 上と右のボーダーで矢印を作成 */
   border-right: 2px solid var(--school-text-muted);
-  transform: translateY(-50%) rotate(45deg);
   transition: all 0.2s ease;
   pointer-events: none;
   /* クリックイベントを通す */
@@ -368,7 +367,7 @@ main {
 
 /* ホバー時の矢印アニメーション */
 .card-primary:hover::after {
-  transform: translateY(-50%) rotate(45deg) translateX(2px);
+  transform: translateY(-50%) translateX(2px) rotate(45deg);
   border-color: var(--school-blue-light);
 }
 
