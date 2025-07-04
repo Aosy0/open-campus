@@ -300,7 +300,7 @@ main {
 /* メインコンテンツ */
 .main-custom {
   background-color: #fff;
-  border-radius: 0;
+  border-radius: 12px;
   box-shadow: none;
   transition: background 0.3s ease, color 0.3s ease;
   margin: 0;
